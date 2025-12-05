@@ -1,0 +1,67 @@
+# ==============================================
+# GitIgnore para Proyecto Virtual Agrícola
+# Base de datos Oracle con imágenes de disco
+# ==============================================
+
+# Carpetas con datos de almacenamiento (imágenes de disco)
+hdd/
+ssd/
+
+# Archivos de base de datos Oracle
+*.dbf
+*.ctl
+*.log
+*.arc
+*.dmp
+*.exp
+*.trc
+*.aud
+
+# Archivos de configuración Oracle específicos del entorno
+*.ora
+orapw*
+spfile*.ora
+*.pfile
+
+# Archivos temporales y de respaldo
+*.tmp
+*.bak
+*.backup
+*.old
+*.swp
+*~
+
+# Archivos de log del sistema
+*.out
+alert_*.log
+listener.log
+
+# Directorios de Oracle comunes que no deben versionarse
+/oradata/
+/admin/
+/diag/
+/fast_recovery_area/
+/audit/
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Archivos de IDEs y editores
+.vscode/
+.idea/
+*.sublime-*
+
+# Archivos compilados Oracle
+*.plc
+
+# Variables de entorno sensibles
+.env
+.env.local
+.env.production
+
+# Archivos con contraseñas o información sensible
+*password*
+*pwd*
+*secret*
