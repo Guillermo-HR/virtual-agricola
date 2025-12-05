@@ -10,11 +10,15 @@ Prompt =========================================================
 Prompt Insertar registros en la tabla zona
 Prompt =========================================================
 
-insert into zona (clave, descripcion)
-    values ('NTR', 'Zona Norte');
-insert into zona (clave, descripcion)
-    values ('SUR', 'Zona Sur');
-insert into zona (clave, descripcion)
-    values ('CTR', 'Zona Centro');
+INSERT INTO zona (clave, descripcion)
+    VALUES ('00NTR', 'Zona Norte');
+INSERT INTO zona (clave, descripcion)
+    VALUES ('00SUR', 'Zona Sur');
+INSERT INTO zona (clave, descripcion)
+    VALUES ('00CTR', 'Zona Centro');
 
-commit;
+COMMIT;
+
+Prompt =========================================================
+Prompt Insercion de registros en la tabla zona completada
+Prompt =========================================================
