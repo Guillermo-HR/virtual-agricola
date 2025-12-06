@@ -43,14 +43,9 @@ AS
     );
 
 BEGIN
-    BEGIN
-        SELECT COUNT(zona_id)
-        INTO v_count_zonas
-        FROM zona;
-    EXCEPTION
-        WHEN NO_DATA_FOUND THEN
-            v_count_zonas := 0;
-    END;
+    SELECT COUNT(zona_id)
+    INTO v_count_zonas
+    FROM zona;
 
     FOR r_socio IN c_socios_pendientes
     LOOP

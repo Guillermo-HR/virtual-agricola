@@ -3,8 +3,8 @@
 --@Descripción:
 
 whenever sqlerror exit rollback
-set verify on
-set feedback on
+set verify off
+set feedback off
 
 Prompt =========================================================
 Prompt Insertar registros en tabla socio
@@ -84,7 +84,7 @@ EXCEPTION
 END;
 /
 
-EXEC INSERTAR_SOCIOS(50, 50, 20);
+EXEC INSERTAR_SOCIOS(0, 0, 1);
 
 Prompt =========================================================
 Prompt Insercion de registros en la tabla socio completada 
