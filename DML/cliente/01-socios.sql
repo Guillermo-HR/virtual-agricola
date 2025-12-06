@@ -16,24 +16,6 @@ CREATE OR REPLACE PROCEDURE INSERTAR_SOCIOS (
     p_n_productores_compradores IN NUMBER
 )
 AS
-    TYPE t_nombres IS TABLE OF VARCHAR2(40);
-    v_nombres t_nombres := t_nombres(
-        'Alejandro', 'Valentina', 'Santiago', 'Camila', 'Emilio',
-        'Regina', 'Mateo', 'Ximena', 'Nicolás', 'Sofía',
-        'Daniel', 'Luciana', 'Javier', 'Valeria', 'Sebastián',
-        'Renata', 'Andrés', 'Mariana', 'Ricardo', 'Victoria'
-    );
-
-    TYPE t_apellidos IS TABLE OF VARCHAR2(40);
-    v_apellidos t_apellidos := t_apellidos(
-        'García', 'Rodríguez', 'Martínez', 'López', 'González',
-        'Pérez', 'Sánchez', 'Ramírez', 'Torres', 'Flores',
-        'Rivera', 'Gómez', 'Díaz', 'Reyes', 'Cruz',
-        'Morales', 'Jiménez', 'Ruiz', 'Silva', 'Castro',
-        'Ortiz', 'Chávez', 'Guerrero', 'Mendoza', 'Vargas',
-        'Herrera', 'Peña', 'Acosta', 'Núñez', 'Rojas'
-    );
-
     v_total_registros NUMBER := p_n_productores + p_n_compradores + p_n_productores_compradores;
     v_nombre          socio.nombre%TYPE;
     v_ap_paterno      socio.ap_paterno%TYPE;
@@ -42,7 +24,24 @@ AS
     v_es_productor    socio.es_productor%TYPE;
     v_es_comprador    socio.es_comprador%TYPE;
     v_rand_num        NUMBER(3);
+    
+    TYPE t_nombres IS TABLE OF socio.nombre%TYPE;
+    v_nombres t_nombres := t_nombres(
+        'Alejandro', 'Valentina', 'Santiago', 'Camila', 'Emilio',
+        'Regina', 'Mateo', 'Ximena', 'Nicolás', 'Sofía',
+        'Daniel', 'Luciana', 'Javier', 'Valeria', 'Sebastián',
+        'Renata', 'Andrés', 'Mariana', 'Ricardo', 'Victoria'
+    );
 
+    TYPE t_apellidos IS TABLE OF socio.ap_paterno%TYPE;
+    v_apellidos t_apellidos := t_apellidos(
+        'García', 'Rodríguez', 'Martínez', 'López', 'González',
+        'Pérez', 'Sánchez', 'Ramírez', 'Torres', 'Flores',
+        'Rivera', 'Gómez', 'Díaz', 'Reyes', 'Cruz',
+        'Morales', 'Jiménez', 'Ruiz', 'Silva', 'Castro',
+        'Ortiz', 'Chávez', 'Guerrero', 'Mendoza', 'Vargas',
+        'Herrera', 'Peña', 'Acosta', 'Núñez', 'Rojas'
+    );
 BEGIN
     FOR i IN 1..v_total_registros
     LOOP
