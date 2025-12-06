@@ -34,7 +34,7 @@ AS
         'Innovación en Producción Agrícola S.A. de C.V.', 'Agroexportaciones del Caribe'
     );
 
-    FUNCTION GENERAR_RFC RETURN VARCHAR2
+    FUNCTION GENERAR_RFC RETURN empresa.rfc%TYPE
     IS
         v_rfc_temp empresa.rfc%TYPE;
         v_rfc_registrado NUMBER;
