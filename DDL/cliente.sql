@@ -7,7 +7,7 @@ set verify off
 set feedback off
 
 Prompt =========================================================
-Prompt creacion de las tablas para modulo cliente
+Prompt Creacion de las tablas para modulo cliente
 Prompt =========================================================
 
 -- Limpiar tablas si existen
@@ -15,7 +15,7 @@ drop table if exists cuenta;
 drop table if exists banco;
 drop table if exists comprador;
 drop table if exists empresa;
-drop table if exists producto_productor;
+drop table if exists productor_producto;
 drop table if exists tipo_producto;
 drop table if exists productor;
 drop table if exists zona;
@@ -27,7 +27,7 @@ create table socio (
     nombre          varchar2(40) not null,
     ap_paterno      varchar2(40) not null,
     ap_materno      varchar2(40),
-    email           varchar2(30) not null,
+    email           varchar2(50) not null,
     es_productor    boolean not null,
     es_comprador    boolean not null,
     constraint socio_pk primary key (socio_id),
@@ -62,7 +62,7 @@ create table tipo_producto (
     tipo_producto_id    number(3, 0) generated always as identity maxvalue 999 not null,
     clave               varchar2(5) not null,
     nombre              varchar2(40) not null,
-    descripcion         varchar2(40) not null,
+    descripcion         varchar2(100) not null,
     foto                blob not null,
     activo              boolean not null,
     constraint tipo_producto_pk primary key (tipo_producto_id),
@@ -71,17 +71,17 @@ create table tipo_producto (
     constraint tipo_producto_nombre_uk unique (nombre)
 );
 
--- Tabla producto_productor
-create table producto_productor (
-    producto_productor_id   number(4, 0) generated always as identity maxvalue 9999 not null,
+-- Tabla productor_producto
+create table productor_producto (
+    productor_producto_id   number(4, 0) generated always as identity maxvalue 9999 not null,
     temporada_inicio        date,
     temporada_fin           date,
     tipo_producto_id        not null,
     productor_id            not null,
-    constraint producto_productor_pk primary key (producto_productor_id),
-    constraint producto_productor_tipo_producto_id_fk foreign key (tipo_producto_id) 
+    constraint productor_producto_pk primary key (productor_producto_id),
+    constraint productor_producto_tipo_producto_id_fk foreign key (tipo_producto_id) 
         references tipo_producto(tipo_producto_id),
-    constraint producto_productor_productor_id_fk foreign key (productor_id) 
+    constraint productor_producto_productor_id_fk foreign key (productor_id) 
         references productor(productor_id)
 );
 
@@ -134,3 +134,7 @@ create table cuenta (
     constraint cuenta_banco_id_fk foreign key (banco_id) references banco(banco_id),
     constraint cuenta_socio_id_fk foreign key (socio_id) references socio(socio_id)
 );
+
+Prompt ==========================================================
+Prompt Creacion de tablas para modulo cliente completada
+Prompt ===========================================================
