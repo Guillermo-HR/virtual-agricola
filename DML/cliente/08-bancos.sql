@@ -20,4 +20,9 @@ insert into banco (clave_banco, nombre_banco)
 values ('CIT', 'Citibanamex');
 insert into banco (clave_banco, nombre_banco)
 values ('HSB', 'HSBC Mexico');
-commit;
+
+COMMIT;
+
+Prompt =========================================================
+Prompt Inserción de registros en tabla banco finalizada
+Prompt =========================================================
