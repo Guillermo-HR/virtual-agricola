@@ -20,16 +20,16 @@ AS
     v_nombre        socio.nombre%TYPE;
     v_ap_paterno    socio.ap_paterno%TYPE;
 
-    CURSOR c_socios_pendientes IS
+    CURSOR c_productores_pendientes IS
         SELECT
-            socio_id,
-            nombre,
-            ap_paterno
+            s.socio_id, s.nombre, s.ap_paterno
         FROM
-            socio
+            socio s
+        LEFT JOIN
+            productor p ON s.socio_id = p.productor_id
         WHERE
             es_productor = 1
-            AND socio_id NOT IN (SELECT productor_id FROM productor);
+            AND p.productor_id IS NULL;
 
     TYPE t_semblanzas IS TABLE OF productor.semblanza%TYPE;
     v_semblanzas t_semblanzas := t_semblanzas(
@@ -47,11 +47,11 @@ BEGIN
     INTO v_count_zonas
     FROM zona;
 
-    FOR r_socio IN c_socios_pendientes
+    FOR r_productor IN c_productores_pendientes
     LOOP
-        v_productor_id := r_socio.socio_id;
-        v_nombre       := r_socio.nombre;
-        v_ap_paterno   := r_socio.ap_paterno;
+        v_productor_id := r_productor.socio_id;
+        v_nombre       := r_productor.nombre;
+        v_ap_paterno   := r_productor.ap_paterno;
         v_semblanza := v_semblanzas(TRUNC(DBMS_RANDOM.VALUE(1, v_semblanzas.COUNT + 1)));
         v_url := LOWER('https://www.' ||  v_nombre || v_ap_paterno ||'.com.mx');
         v_zona_id := TRUNC(DBMS_RANDOM.VALUE(1, v_count_zonas + 1));
