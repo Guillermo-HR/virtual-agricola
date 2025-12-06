@@ -21,9 +21,14 @@ AS
     v_fecha_fin            DATE;
     v_count_tipos          NUMBER;
     CURSOR c_productores IS
-        SELECT productor_id
-        FROM productor
-        WHERE productor_id NOT IN (SELECT DISTINCT productor_id FROM productor_producto);
+        SELECT 
+            p.productor_id
+        FROM 
+            productor p
+        LEFT JOIN
+            productor_producto pp ON p.productor_id = pp.productor_id
+        WHERE 
+            pp.productor_id IS NULL;
 BEGIN
     BEGIN
         SELECT COUNT(tipo_producto_id)
