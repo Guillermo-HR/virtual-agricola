@@ -10,15 +10,15 @@ Prompt =========================================================
 Prompt insertar registros en tabla banco
 Prompt =========================================================
 
-insert into banco (clave_banco, nombre_banco)
+insert into banco (clave, nombre)
 values ('BNM', 'Banco Nacional de Mexico');
-insert into banco (clave_banco, nombre_banco)
+insert into banco (clave, nombre)
 values ('BSA', 'Banco Santander');
-insert into banco (clave_banco, nombre_banco)
+insert into banco (clave, nombre)
 values ('BBV', 'BBVA Bancomer');
-insert into banco (clave_banco, nombre_banco)
+insert into banco (clave, nombre)
 values ('CIT', 'Citibanamex');
-insert into banco (clave_banco, nombre_banco)
+insert into banco (clave, nombre)
 values ('HSB', 'HSBC Mexico');
 
 COMMIT;
