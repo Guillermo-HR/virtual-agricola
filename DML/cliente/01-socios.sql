@@ -42,6 +42,27 @@ AS
         'Ortiz', 'Chávez', 'Guerrero', 'Mendoza', 'Vargas',
         'Herrera', 'Peña', 'Acosta', 'Núñez', 'Rojas'
     );
+    FUNCTION GENERAR_EMAIL(
+        p_nombre IN socio.nombre%TYPE,
+        p_ap_paterno IN socio.ap_paterno%TYPE
+    ) RETURN socio.email%TYPE
+    IS
+        v_email_temp socio.email%TYPE;
+        v_rand_num_temp NUMBER(3);
+        v_email_registrado NUMBER;
+    BEGIN
+        v_rand_num_temp := TRUNC(DBMS_RANDOM.VALUE(1, 100));
+        v_email_temp := LOWER(p_nombre || '.' || p_ap_paterno) || v_rand_num_temp || '@mail.com';
+        SELECT COUNT(*) 
+        INTO v_email_registrado
+        FROM socio
+        WHERE email = v_email_temp;
+        IF v_email_registrado = 0 THEN
+            RETURN v_email_temp;
+        ELSE
+            RETURN GENERAR_EMAIL(p_nombre, p_ap_paterno);
+        END IF;
+    END GENERAR_EMAIL;
 BEGIN
     FOR i IN 1..v_total_registros
     LOOP
@@ -51,7 +72,7 @@ BEGIN
 
         v_rand_num   := TRUNC(DBMS_RANDOM.VALUE(1, 100));
 
-        v_email := LOWER(v_nombre || '.' || v_ap_paterno) || v_rand_num || '@mail.com';
+        v_email := GENERAR_EMAIL(v_nombre, v_ap_paterno);
 
         IF i <= p_n_productores THEN
             v_es_productor := TRUE;
