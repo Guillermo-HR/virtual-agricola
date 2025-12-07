@@ -6,10 +6,6 @@ whenever sqlerror exit rollback
 set verify off
 set feedback off
 
-Prompt =========================================================
-Prompt Insertar registros en tabla productor
-Prompt =========================================================
-
 CREATE OR REPLACE PROCEDURE INSERTAR_PRODUCTORES
 AS
     v_productor_id  productor.productor_id%TYPE;
@@ -43,9 +39,15 @@ AS
     );
 
 BEGIN
+    DBMS_OUTPUT.PUT_LINE('=========================================================');
+    DBMS_OUTPUT.PUT_LINE('Insertar registros en la tabla productor');
+    DBMS_OUTPUT.PUT_LINE('=========================================================');
     SELECT COUNT(zona_id)
     INTO v_count_zonas
     FROM zona;
+    IF v_count_zonas = 0 THEN
+        RAISE_APPLICATION_ERROR(-20003, 'No hay zonas disponibles para asignar a los productores.');
+    END IF;
 
     FOR r_productor IN c_productores_pendientes
     LOOP
@@ -54,7 +56,11 @@ BEGIN
         v_ap_paterno   := r_productor.ap_paterno;
         v_semblanza := v_semblanzas(TRUNC(DBMS_RANDOM.VALUE(1, v_semblanzas.COUNT + 1)));
         v_url := LOWER('https://www.' ||  v_nombre || v_ap_paterno ||'.com.mx');
-        v_zona_id := TRUNC(DBMS_RANDOM.VALUE(1, v_count_zonas + 1));
+        SELECT zona_id 
+        INTO v_zona_id
+        FROM zona 
+        ORDER BY DBMS_RANDOM.VALUE
+        FETCH FIRST 1 ROWS ONLY;
 
         BEGIN
             INSERT INTO productor (productor_id, semblanza, url, zona_id)
@@ -68,15 +74,14 @@ BEGIN
 
     COMMIT;
 
+    DBMS_OUTPUT.PUT_LINE('=========================================================');
+    DBMS_OUTPUT.PUT_LINE('Insercion de registros en la tabla productor completada');
+    DBMS_OUTPUT.PUT_LINE('=========================================================');
+
 EXCEPTION
     WHEN OTHERS THEN
         ROLLBACK;
         DBMS_OUTPUT.PUT_LINE('Error al insertar productores: ' || SQLERRM);
+        RAISE;
 END;
 /
-
-EXEC INSERTAR_PRODUCTORES;
-
-Prompt =========================================================
-Prompt Insercion de registros en tabla productor completada
-Prompt =========================================================

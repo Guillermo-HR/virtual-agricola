@@ -6,10 +6,6 @@ whenever sqlerror exit rollback
 set verify off
 set feedback off
 
-Prompt =========================================================
-Prompt insertar registros en tabla comprador
-Prompt =========================================================
-
 CREATE OR REPLACE PROCEDURE INSERTAR_COMPRADORES
 AS
     v_comprador_id            comprador.comprador_id%TYPE;
@@ -42,6 +38,9 @@ AS
         WHERE
             c.empresa_id IS NULL;
 BEGIN
+    DBMS_OUTPUT.PUT_LINE('=========================================================');
+    DBMS_OUTPUT.PUT_LINE('Insertar registros en la tabla comprador');
+    DBMS_OUTPUT.PUT_LINE('=========================================================');
     SELECT COUNT(e.empresa_id)
     INTO v_n_empresas_disponibles
     FROM empresa e 
@@ -87,16 +86,16 @@ BEGIN
                 dbms_output.put_line('Error al insertar comprador ID ' || v_comprador_id || ': ' || SQLERRM);
         END;
     END LOOP;
+
     COMMIT;
+
+    DBMS_OUTPUT.PUT_LINE('=========================================================');
+    DBMS_OUTPUT.PUT_LINE('Insercion de registros en la tabla comprador completada');
+    DBMS_OUTPUT.PUT_LINE('=========================================================');
 EXCEPTION
     WHEN OTHERS THEN
         ROLLBACK;
         DBMS_OUTPUT.PUT_LINE('Error al insertar compradores: ' || SQLERRM);
+        RAISE;
 END;
 /
-
-EXEC INSERTAR_COMPRADORES;
-
-Prompt =========================================================
-Prompt Insercion de registros en tabla comprador completada
-Prompt =========================================================

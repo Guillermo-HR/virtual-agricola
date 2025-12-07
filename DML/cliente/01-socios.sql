@@ -6,10 +6,6 @@ whenever sqlerror exit rollback
 set verify off
 set feedback off
 
-Prompt =========================================================
-Prompt Insertar registros en tabla socio
-Prompt =========================================================
-
 CREATE OR REPLACE PROCEDURE INSERTAR_SOCIOS (
     p_n_productores IN NUMBER,
     p_n_compradores IN NUMBER,
@@ -24,6 +20,7 @@ AS
     v_es_productor    socio.es_productor%TYPE;
     v_es_comprador    socio.es_comprador%TYPE;
     v_rand_num        NUMBER(3);
+    v_ap_materno_null     NUMBER(1);
     
     TYPE t_nombres IS TABLE OF socio.nombre%TYPE;
     v_nombres t_nombres := t_nombres(
@@ -64,14 +61,19 @@ AS
         END IF;
     END GENERAR_EMAIL;
 BEGIN
+    DBMS_OUTPUT.PUT_LINE('=========================================================');
+    DBMS_OUTPUT.PUT_LINE('Insertar registros en tabla socio');
+    DBMS_OUTPUT.PUT_LINE('=========================================================');
     FOR i IN 1..v_total_registros
     LOOP
         v_nombre     := v_nombres(TRUNC(DBMS_RANDOM.VALUE(1, v_nombres.COUNT + 1)));
         v_ap_paterno := v_apellidos(TRUNC(DBMS_RANDOM.VALUE(1, v_apellidos.COUNT + 1)));
-        v_ap_materno := v_apellidos(TRUNC(DBMS_RANDOM.VALUE(1, v_apellidos.COUNT + 1)));
-
-        v_rand_num   := TRUNC(DBMS_RANDOM.VALUE(1, 100));
-
+        v_ap_materno_null := TRUNC(DBMS_RANDOM.VALUE(0, 2));
+        IF v_ap_materno_null = 0 THEN
+            v_ap_materno := NULL;
+        ELSE
+            v_ap_materno := v_apellidos(TRUNC(DBMS_RANDOM.VALUE(1, v_apellidos.COUNT + 1)));
+        END IF;
         v_email := GENERAR_EMAIL(v_nombre, v_ap_paterno);
 
         IF i <= p_n_productores THEN
@@ -97,15 +99,14 @@ BEGIN
 
     COMMIT;
 
+    DBMS_OUTPUT.PUT_LINE('=========================================================');
+    DBMS_OUTPUT.PUT_LINE('Insercion de registros en la tabla socio completada');
+    DBMS_OUTPUT.PUT_LINE('=========================================================');
+
 EXCEPTION
     WHEN OTHERS THEN
         ROLLBACK;
         DBMS_OUTPUT.PUT_LINE('Error al insertar socios: ' || SQLERRM);
+        RAISE;
 END;
 /
-
-EXEC INSERTAR_SOCIOS(0, 0, 1);
-
-Prompt =========================================================
-Prompt Insercion de registros en la tabla socio completada 
-Prompt =========================================================

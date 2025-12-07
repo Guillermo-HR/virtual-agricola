@@ -6,10 +6,6 @@ whenever sqlerror exit rollback
 set verify off
 set feedback off
 
-Prompt =========================================================
-Prompt Insertar registros en la tabla tipo productor producto
-Prompt =========================================================
-
 CREATE OR REPLACE PROCEDURE INSERTAR_PRODUCTOR_PRODUCTOS
 AS
     v_tipo_producto_id     productor_producto.tipo_producto_id%TYPE;
@@ -30,6 +26,9 @@ AS
         WHERE 
             pp.productor_id IS NULL;
 BEGIN
+    DBMS_OUTPUT.PUT_LINE('=========================================================');
+    DBMS_OUTPUT.PUT_LINE('Insertar registros en la tabla productor_producto');
+    DBMS_OUTPUT.PUT_LINE('=========================================================');
     BEGIN
         SELECT COUNT(tipo_producto_id)
         INTO v_count_tipos
@@ -71,16 +70,16 @@ BEGIN
             END;
         END LOOP;
     END LOOP;
+
     COMMIT;
+
+    DBMS_OUTPUT.PUT_LINE('=========================================================');
+    DBMS_OUTPUT.PUT_LINE('Insercion de registros en la tabla productor_producto completada');
+    DBMS_OUTPUT.PUT_LINE('=========================================================');
 EXCEPTION
     WHEN OTHERS THEN
         ROLLBACK;
         DBMS_OUTPUT.PUT_LINE('Error al insertar registros en productor_producto: ' || SQLERRM);
+        RAISE;
 END;
 /
-
-EXEC INSERTAR_PRODUCTOR_PRODUCTOS();
-
-Prompt =========================================================
-Prompt Insercion de registros en la tabla productor producto finalizada
-Prompt =========================================================

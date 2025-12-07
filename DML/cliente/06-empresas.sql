@@ -6,10 +6,6 @@ whenever sqlerror exit rollback
 set verify off
 set feedback off
 
-Prompt =========================================================
-Prompt insertar registros en tabla empresa
-Prompt =========================================================
-
 CREATE OR REPLACE PROCEDURE INSERTAR_EMPRESAS
 AS
     v_rfc                empresa.rfc%TYPE;
@@ -50,6 +46,9 @@ AS
         END IF;
     END GENERAR_RFC;
 BEGIN
+    DBMS_OUTPUT.PUT_LINE('=========================================================');
+    DBMS_OUTPUT.PUT_LINE('Insertar registros en la tabla empresa completada');
+    DBMS_OUTPUT.PUT_LINE('=========================================================');
     SELECT (
         (SELECT COUNT(*) FROM socio WHERE es_comprador = 1) -
         (SELECT COUNT(*) FROM empresa)
@@ -69,16 +68,16 @@ BEGIN
                 dbms_output.put_line('Error al insertar empresa ' || v_nombre || ': ' || SQLERRM);
         END;
     END LOOP;
+
     COMMIT;
+
+    DBMS_OUTPUT.PUT_LINE('=========================================================');
+    DBMS_OUTPUT.PUT_LINE('Insercion de registros en la tabla empresa completada');
+    DBMS_OUTPUT.PUT_LINE('=========================================================');
 EXCEPTION
     WHEN OTHERS THEN
         ROLLBACK;
         DBMS_OUTPUT.PUT_LINE('Error al insertar registros en empresa: ' || SQLERRM);
+        RAISE;
 END;
 /
-
-EXEC INSERTAR_EMPRESAS;
-
-Prompt =========================================================
-Prompt Insercion de registros en tabla empresa completada
-Prompt =========================================================
