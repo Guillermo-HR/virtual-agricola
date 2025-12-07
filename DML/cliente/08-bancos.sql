@@ -3,7 +3,6 @@
 --@Descripción:
 
 whenever sqlerror exit rollback
-set verify off
 set feedback off
 
 Prompt - Iniciando insercion de registros en tabla banco
@@ -71,4 +70,4 @@ VALUES ('VTA', 'Ve por Más (BX+)');
 
 COMMIT;
 
-Prompt - Insercion de registros en tabla banco completada
+Prompt > Insercion de registros en tabla banco completada

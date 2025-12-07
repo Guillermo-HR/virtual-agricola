@@ -3,6 +3,7 @@
 --@Descripción:
 
 whenever sqlerror exit rollback
+set feedback off
 
 Prompt - Iniciando insercion de registros en la tabla zona
 
@@ -15,4 +16,4 @@ INSERT INTO zona (clave, descripcion)
 
 COMMIT;
 
-Prompt - Insercion de registros en la tabla zona completada
+Prompt > Insercion de registros en la tabla zona completada

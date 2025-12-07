@@ -91,7 +91,7 @@ BEGIN
 
     COMMIT;
 
-    DBMS_OUTPUT.PUT_LINE('- Insercion de registros en la tabla cuenta completada');
+    DBMS_OUTPUT.PUT_LINE('> Insercion de registros en la tabla cuenta completada');
 EXCEPTION
     WHEN OTHERS THEN
         ROLLBACK;
@@ -101,4 +101,4 @@ EXCEPTION
 END INSERTAR_CUENTAS;
 /
 
-Prompt - Creacion de procedimiento insertar_cuentas completada
+Prompt > Creacion de procedimiento insertar_cuentas completada

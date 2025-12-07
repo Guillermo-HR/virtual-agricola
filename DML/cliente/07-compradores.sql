@@ -87,7 +87,7 @@ BEGIN
 
     COMMIT;
 
-    DBMS_OUTPUT.PUT_LINE('- Insercion de registros en la tabla comprador completada');
+    DBMS_OUTPUT.PUT_LINE('> Insercion de registros en la tabla comprador completada');
 EXCEPTION
     WHEN OTHERS THEN
         ROLLBACK;
@@ -96,4 +96,4 @@ EXCEPTION
 END;
 /
 
-Prompt - Creacion de procedimiento insertar_compradores completada
+Prompt > Creacion de procedimiento insertar_compradores completada

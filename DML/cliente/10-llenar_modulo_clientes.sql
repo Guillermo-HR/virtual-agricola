@@ -20,7 +20,7 @@ BEGIN
     INSERTAR_EMPRESAS;
     INSERTAR_COMPRADORES;
     INSERTAR_CUENTAS;
-    DBMS_OUTPUT.PUT_LINE('- Insercion de registros modulo cliente terminado');
+    DBMS_OUTPUT.PUT_LINE('> Insercion de registros modulo cliente terminado');
 EXCEPTION
     WHEN OTHERS THEN
         ROLLBACK;
@@ -28,4 +28,4 @@ EXCEPTION
 END LLENAR_MODULO_CLIENTE;
 /
 
-Prompt - Creacion de procedimiento llenar_modulo_cliente completada
+Prompt > Creacion de procedimiento llenar_modulo_cliente completada

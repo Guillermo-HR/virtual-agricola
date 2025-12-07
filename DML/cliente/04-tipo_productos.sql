@@ -3,6 +3,7 @@
 --@Descripción:
 
 whenever sqlerror exit rollback
+set feedback off
 
 Prompt - Iniciando insercion de registros en la tabla tipo producto
 
@@ -109,4 +110,4 @@ INSERT INTO tipo_producto (clave, nombre, descripcion, foto, activo)
 
 COMMIT;
 
-Prompt - Insercion de registros en la tabla tipo producto completada
+Prompt > Insercion de registros en la tabla tipo producto completada

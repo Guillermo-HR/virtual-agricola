@@ -97,7 +97,7 @@ BEGIN
 
     COMMIT;
 
-    DBMS_OUTPUT.PUT_LINE('- Insercion de registros en la tabla socio completada');
+    DBMS_OUTPUT.PUT_LINE('> Insercion de registros en la tabla socio completada');
 
 EXCEPTION
     WHEN OTHERS THEN
@@ -107,4 +107,4 @@ EXCEPTION
 END;
 /
 
-Prompt - Creacion de procedimiento insertar_socios completada
+Prompt > Creacion de procedimiento insertar_socios completada

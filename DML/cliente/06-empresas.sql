@@ -69,7 +69,7 @@ BEGIN
 
     COMMIT;
 
-    DBMS_OUTPUT.PUT_LINE('- Insercion de registros en la tabla empresa completada');
+    DBMS_OUTPUT.PUT_LINE('> Insercion de registros en la tabla empresa completada');
 EXCEPTION
     WHEN OTHERS THEN
         ROLLBACK;
@@ -78,4 +78,4 @@ EXCEPTION
 END;
 /
 
-Prompt - Creacion de procedimiento insertar_empresas completada
+Prompt > Creacion de procedimiento insertar_empresas completada

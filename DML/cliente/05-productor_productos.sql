@@ -71,7 +71,7 @@ BEGIN
 
     COMMIT;
 
-    DBMS_OUTPUT.PUT_LINE('- Insercion de registros en la tabla productor_producto completada');
+    DBMS_OUTPUT.PUT_LINE('> Insercion de registros en la tabla productor_producto completada');
 EXCEPTION
     WHEN OTHERS THEN
         ROLLBACK;
@@ -80,4 +80,4 @@ EXCEPTION
 END;
 /
 
-Prompt - Creacion de procedimiento insertar_productor_productos completada
+Prompt > Creacion de procedimiento insertar_productor_productos completada

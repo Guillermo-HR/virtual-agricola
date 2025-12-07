@@ -8,9 +8,9 @@ Prompt =========================================================
 Prompt Iniciando insercion de datos en tablas catalogo modulo cliente
 Prompt =========================================================
 
-@02-zonas.sql
-@04-tipo_productos.sql
-@08-bancos.sql
+@DML/cliente/02-zonas.sql
+@DML/cliente/04-tipo_productos.sql
+@DML/cliente/08-bancos.sql
 
 Prompt =========================================================
 Prompt Insercion de datos en tablas catalogo modulo cliente completada
@@ -20,13 +20,13 @@ Prompt =========================================================
 Prompt Iniciando creacion de procedimientos modulo cliente
 Prompt =========================================================
 
-@01-socios.sql
-@03-productores.sql
-@05-productor_productos.sql
-@06-empresas.sql
-@07-compradores.sql
-@09-cuentas.sql
-@10-llenar_modulo_clientes.sql
+@DML/cliente/01-socios.sql
+@DML/cliente/03-productores.sql
+@DML/cliente/05-productor_productos.sql
+@DML/cliente/06-empresas.sql
+@DML/cliente/07-compradores.sql
+@DML/cliente/09-cuentas.sql
+@DML/cliente/10-llenar_modulo_clientes.sql
 
 Prompt =========================================================
 Prompt Creacion de procedimientos modulo cliente completada
