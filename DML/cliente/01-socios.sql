@@ -3,8 +3,8 @@
 --@Descripción:
 
 whenever sqlerror exit rollback
-set verify off
-set feedback off
+
+Prompt - Iniciando creacion de procedimiento insertar_socios
 
 CREATE OR REPLACE PROCEDURE INSERTAR_SOCIOS (
     p_n_productores IN NUMBER,
@@ -61,9 +61,7 @@ AS
         END IF;
     END GENERAR_EMAIL;
 BEGIN
-    DBMS_OUTPUT.PUT_LINE('=========================================================');
-    DBMS_OUTPUT.PUT_LINE('Insertar registros en tabla socio');
-    DBMS_OUTPUT.PUT_LINE('=========================================================');
+    DBMS_OUTPUT.PUT_LINE('- Iniciando insercion de registros en tabla socio');
     FOR i IN 1..v_total_registros
     LOOP
         v_nombre     := v_nombres(TRUNC(DBMS_RANDOM.VALUE(1, v_nombres.COUNT + 1)));
@@ -92,21 +90,21 @@ BEGIN
             VALUES (v_nombre, v_ap_paterno, v_ap_materno, v_email, v_es_productor, v_es_comprador);
         EXCEPTION
             WHEN OTHERS THEN
-                dbms_output.put_line('Error al insertar socio ' || v_nombre || ' ' || v_ap_paterno || ': ' || SQLERRM);
+                dbms_output.put_line('* Error al insertar socio ' || v_nombre || ' ' || v_ap_paterno || ': ' || SQLERRM);
         END;
 
     END LOOP;
 
     COMMIT;
 
-    DBMS_OUTPUT.PUT_LINE('=========================================================');
-    DBMS_OUTPUT.PUT_LINE('Insercion de registros en la tabla socio completada');
-    DBMS_OUTPUT.PUT_LINE('=========================================================');
+    DBMS_OUTPUT.PUT_LINE('- Insercion de registros en la tabla socio completada');
 
 EXCEPTION
     WHEN OTHERS THEN
         ROLLBACK;
-        DBMS_OUTPUT.PUT_LINE('Error al insertar socios: ' || SQLERRM);
+        DBMS_OUTPUT.PUT_LINE('* Error al insertar socios: ' || SQLERRM);
         RAISE;
 END;
 /
+
+Prompt - Creacion de procedimiento insertar_socios completada

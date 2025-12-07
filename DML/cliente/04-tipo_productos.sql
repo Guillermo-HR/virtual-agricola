@@ -3,12 +3,8 @@
 --@Descripción:
 
 whenever sqlerror exit rollback
-set verify off
-set feedback off
 
-Prompt =========================================================
-Prompt Insertar registros en la tabla tipo producto
-Prompt =========================================================
+Prompt - Iniciando insercion de registros en la tabla tipo producto
 
 INSERT INTO tipo_producto (clave, nombre, descripcion, foto, activo) 
     VALUES ('maz_b', 'Maíz Blanco', 'Grano básico utilizado para tortillas, harinas y forraje.', empty_blob(), True);
@@ -113,6 +109,4 @@ INSERT INTO tipo_producto (clave, nombre, descripcion, foto, activo)
 
 COMMIT;
 
-Prompt =========================================================
-Prompt Insercion de registros en la tabla tipo producto finalizada
-Prompt =========================================================
+Prompt - Insercion de registros en la tabla tipo producto completada

@@ -3,8 +3,8 @@
 --@Descripción:
 
 whenever sqlerror exit rollback
-set verify off
-set feedback off
+
+Prompt - Iniciando creacion de procedimiento insertar_productor_productos
 
 CREATE OR REPLACE PROCEDURE INSERTAR_PRODUCTOR_PRODUCTOS
 AS
@@ -26,9 +26,7 @@ AS
         WHERE 
             pp.productor_id IS NULL;
 BEGIN
-    DBMS_OUTPUT.PUT_LINE('=========================================================');
-    DBMS_OUTPUT.PUT_LINE('Insertar registros en la tabla productor_producto');
-    DBMS_OUTPUT.PUT_LINE('=========================================================');
+    DBMS_OUTPUT.PUT_LINE('- Iniciando insercion de registros en la tabla productor_producto');
     BEGIN
         SELECT COUNT(tipo_producto_id)
         INTO v_count_tipos
@@ -66,20 +64,20 @@ BEGIN
                 VALUES (v_fecha_inicio, v_fecha_fin, v_productor_id, v_tipo_producto_id);
             EXCEPTION
                 WHEN OTHERS THEN
-                    dbms_output.put_line('Error al insertar productor_producto para productor_id ' || v_productor_id || ' y tipo_producto_id ' || v_tipo_producto_id || ': ' || SQLERRM);
+                    dbms_output.put_line('* Error al insertar productor_producto para productor_id ' || v_productor_id || ' y tipo_producto_id ' || v_tipo_producto_id || ': ' || SQLERRM);
             END;
         END LOOP;
     END LOOP;
 
     COMMIT;
 
-    DBMS_OUTPUT.PUT_LINE('=========================================================');
-    DBMS_OUTPUT.PUT_LINE('Insercion de registros en la tabla productor_producto completada');
-    DBMS_OUTPUT.PUT_LINE('=========================================================');
+    DBMS_OUTPUT.PUT_LINE('- Insercion de registros en la tabla productor_producto completada');
 EXCEPTION
     WHEN OTHERS THEN
         ROLLBACK;
-        DBMS_OUTPUT.PUT_LINE('Error al insertar registros en productor_producto: ' || SQLERRM);
+        DBMS_OUTPUT.PUT_LINE('* Error al insertar registros en productor_producto: ' || SQLERRM);
         RAISE;
 END;
 /
+
+Prompt - Creacion de procedimiento insertar_productor_productos completada

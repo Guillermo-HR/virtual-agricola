@@ -3,8 +3,8 @@
 --@Descripción:
 
 whenever sqlerror exit rollback
-set verify off
-set feedback off
+
+Prompt - Iniciando creacion de procedimiento insertar_productores
 
 CREATE OR REPLACE PROCEDURE INSERTAR_PRODUCTORES
 AS
@@ -39,9 +39,7 @@ AS
     );
 
 BEGIN
-    DBMS_OUTPUT.PUT_LINE('=========================================================');
-    DBMS_OUTPUT.PUT_LINE('Insertar registros en la tabla productor');
-    DBMS_OUTPUT.PUT_LINE('=========================================================');
+    DBMS_OUTPUT.PUT_LINE('- Iniciando insercion de registros en la tabla productor');
     SELECT COUNT(zona_id)
     INTO v_count_zonas
     FROM zona;
@@ -67,21 +65,21 @@ BEGIN
             VALUES (v_productor_id, v_semblanza, v_url, v_zona_id);
         EXCEPTION
             WHEN OTHERS THEN
-                DBMS_OUTPUT.PUT_LINE('Error al insertar productor ID ' || v_productor_id || ': ' || SQLERRM);
+                DBMS_OUTPUT.PUT_LINE('* Error al insertar productor ID ' || v_productor_id || ': ' || SQLERRM);
         END;
 
     END LOOP;
 
     COMMIT;
 
-    DBMS_OUTPUT.PUT_LINE('=========================================================');
-    DBMS_OUTPUT.PUT_LINE('Insercion de registros en la tabla productor completada');
-    DBMS_OUTPUT.PUT_LINE('=========================================================');
+    DBMS_OUTPUT.PUT_LINE('- Insercion de registros en la tabla productor completada');
 
 EXCEPTION
     WHEN OTHERS THEN
         ROLLBACK;
-        DBMS_OUTPUT.PUT_LINE('Error al insertar productores: ' || SQLERRM);
+        DBMS_OUTPUT.PUT_LINE('* Error al insertar productores: ' || SQLERRM);
         RAISE;
 END;
 /
+
+Prompt - Creacion de procedimiento insertar_productores completada

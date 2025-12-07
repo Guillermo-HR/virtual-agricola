@@ -3,8 +3,8 @@
 --@Descripción:
 
 whenever sqlerror exit rollback
-set verify off
-set feedback off
+
+Prompt - Iniciando creacion de procedimiento insertar_compradores
 
 CREATE OR REPLACE PROCEDURE INSERTAR_COMPRADORES
 AS
@@ -38,9 +38,7 @@ AS
         WHERE
             c.empresa_id IS NULL;
 BEGIN
-    DBMS_OUTPUT.PUT_LINE('=========================================================');
-    DBMS_OUTPUT.PUT_LINE('Insertar registros en la tabla comprador');
-    DBMS_OUTPUT.PUT_LINE('=========================================================');
+    DBMS_OUTPUT.PUT_LINE('- Iniciando insercion de registros en la tabla comprador');
     SELECT COUNT(e.empresa_id)
     INTO v_n_empresas_disponibles
     FROM empresa e 
@@ -83,19 +81,19 @@ BEGIN
             v_compradores_registrados := v_compradores_registrados + 1;
         EXCEPTION
             WHEN OTHERS THEN
-                dbms_output.put_line('Error al insertar comprador ID ' || v_comprador_id || ': ' || SQLERRM);
+                dbms_output.put_line('* Error al insertar comprador ID ' || v_comprador_id || ': ' || SQLERRM);
         END;
     END LOOP;
 
     COMMIT;
 
-    DBMS_OUTPUT.PUT_LINE('=========================================================');
-    DBMS_OUTPUT.PUT_LINE('Insercion de registros en la tabla comprador completada');
-    DBMS_OUTPUT.PUT_LINE('=========================================================');
+    DBMS_OUTPUT.PUT_LINE('- Insercion de registros en la tabla comprador completada');
 EXCEPTION
     WHEN OTHERS THEN
         ROLLBACK;
-        DBMS_OUTPUT.PUT_LINE('Error al insertar compradores: ' || SQLERRM);
+        DBMS_OUTPUT.PUT_LINE('* Error al insertar compradores: ' || SQLERRM);
         RAISE;
 END;
 /
+
+Prompt - Creacion de procedimiento insertar_compradores completada

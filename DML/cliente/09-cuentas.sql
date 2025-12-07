@@ -3,8 +3,8 @@
 --@Descripción:
 
 whenever sqlerror exit rollback
-set verify off
-set feedback off
+
+Prompt - Iniciando creacion de procedimiento insertar_cuentas
 
 CREATE OR REPLACE PROCEDURE INSERTAR_CUENTAS
 AS
@@ -56,9 +56,7 @@ AS
         VALUES (p_clabe, p_titular, p_es_principal, p_activa, p_banco_id, p_socio_id);
     END INSERTAR_CUENTA;
 BEGIN
-    DBMS_OUTPUT.PUT_LINE('=========================================================');
-    DBMS_OUTPUT.PUT_LINE('Insertar registros en la tabla cuenta completada');
-    DBMS_OUTPUT.PUT_LINE('=========================================================');
+    DBMS_OUTPUT.PUT_LINE('- Iniciando insercion de registros en la tabla cuenta');
     SELECT COUNT(b.banco_id)
     INTO v_n_bancos
     FROM banco b;
@@ -93,14 +91,14 @@ BEGIN
 
     COMMIT;
 
-    DBMS_OUTPUT.PUT_LINE('=========================================================');
-    DBMS_OUTPUT.PUT_LINE('Insercion de registros en la tabla cuenta completada');
-    DBMS_OUTPUT.PUT_LINE('=========================================================');
+    DBMS_OUTPUT.PUT_LINE('- Insercion de registros en la tabla cuenta completada');
 EXCEPTION
     WHEN OTHERS THEN
         ROLLBACK;
-        DBMS_OUTPUT.PUT_LINE('Error al insertar cuentas: ' || SQLERRM);
+        DBMS_OUTPUT.PUT_LINE('* Error al insertar cuentas: ' || SQLERRM);
         RAISE;
 
 END INSERTAR_CUENTAS;
 /
+
+Prompt - Creacion de procedimiento insertar_cuentas completada

@@ -3,8 +3,8 @@
 --@Descripción:
 
 whenever sqlerror exit rollback
-set verify off
-set feedback off
+
+Prompt - Iniciando creacion de procedimiento insertar_empresas
 
 CREATE OR REPLACE PROCEDURE INSERTAR_EMPRESAS
 AS
@@ -46,9 +46,7 @@ AS
         END IF;
     END GENERAR_RFC;
 BEGIN
-    DBMS_OUTPUT.PUT_LINE('=========================================================');
-    DBMS_OUTPUT.PUT_LINE('Insertar registros en la tabla empresa completada');
-    DBMS_OUTPUT.PUT_LINE('=========================================================');
+    DBMS_OUTPUT.PUT_LINE('- Iniciando insercion de registros en la tabla empresa');
     SELECT (
         (SELECT COUNT(*) FROM socio WHERE es_comprador = 1) -
         (SELECT COUNT(*) FROM empresa)
@@ -65,19 +63,19 @@ BEGIN
             VALUES (v_nombre, v_rfc, v_anio_inicio);
         EXCEPTION
             WHEN OTHERS THEN
-                dbms_output.put_line('Error al insertar empresa ' || v_nombre || ': ' || SQLERRM);
+                dbms_output.put_line('* Error al insertar empresa ' || v_nombre || ': ' || SQLERRM);
         END;
     END LOOP;
 
     COMMIT;
 
-    DBMS_OUTPUT.PUT_LINE('=========================================================');
-    DBMS_OUTPUT.PUT_LINE('Insercion de registros en la tabla empresa completada');
-    DBMS_OUTPUT.PUT_LINE('=========================================================');
+    DBMS_OUTPUT.PUT_LINE('- Insercion de registros en la tabla empresa completada');
 EXCEPTION
     WHEN OTHERS THEN
         ROLLBACK;
-        DBMS_OUTPUT.PUT_LINE('Error al insertar registros en empresa: ' || SQLERRM);
+        DBMS_OUTPUT.PUT_LINE('* Error al insertar registros en empresa: ' || SQLERRM);
         RAISE;
 END;
 /
+
+Prompt - Creacion de procedimiento insertar_empresas completada

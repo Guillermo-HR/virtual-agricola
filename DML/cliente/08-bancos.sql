@@ -6,9 +6,7 @@ whenever sqlerror exit rollback
 set verify off
 set feedback off
 
-Prompt =========================================================
-Prompt insertar registros en tabla banco
-Prompt =========================================================
+Prompt - Iniciando insercion de registros en tabla banco
 
 INSERT INTO banco (clave, nombre)
 VALUES ('BNA', 'Banco Azteca');
@@ -73,6 +71,4 @@ VALUES ('VTA', 'Ve por Más (BX+)');
 
 COMMIT;
 
-Prompt =========================================================
-Prompt Insercion de registros en tabla banco finalizada
-Prompt =========================================================
+Prompt - Insercion de registros en tabla banco completada

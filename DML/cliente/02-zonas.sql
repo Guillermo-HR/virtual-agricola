@@ -3,12 +3,8 @@
 --@Descripción:
 
 whenever sqlerror exit rollback
-set verify off
-set feedback off
 
-Prompt =========================================================
-Prompt Insertar registros en la tabla zona
-Prompt =========================================================
+Prompt - Iniciando insercion de registros en la tabla zona
 
 INSERT INTO zona (clave, descripcion)
     VALUES ('00NTR', 'Zona Norte');
@@ -19,6 +15,4 @@ INSERT INTO zona (clave, descripcion)
 
 COMMIT;
 
-Prompt =========================================================
-Prompt Insercion de registros en la tabla zona completada
-Prompt =========================================================
+Prompt - Insercion de registros en la tabla zona completada
