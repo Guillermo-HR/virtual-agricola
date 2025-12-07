@@ -3,12 +3,8 @@
 --@Descripción:
 
 whenever sqlerror exit rollback
-set verify off
-set feedback off
 
-Prompt =========================================================
-Prompt Creacion de las tablas para modulo cliente
-Prompt =========================================================
+Prompt - Iniciando creacion de objetos para modulo cliente
 
 -- Limpiar tablas si existen
 drop table if exists cuenta;
@@ -136,6 +132,4 @@ create table cuenta (
     constraint cuenta_socio_id_fk foreign key (socio_id) references socio(socio_id)
 );
 
-Prompt ==========================================================
-Prompt Creacion de tablas para modulo cliente completada
-Prompt ===========================================================
+Prompt - Creacion de objetos para modulo cliente completada
