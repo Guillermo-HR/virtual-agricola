@@ -8,8 +8,8 @@ Prompt ========================================================
 Prompt Iniciando creacion de objetos
 Prompt ========================================================
 
-@01-clientes.sql
-@02-operaciones.sql
+@DDL/01-cliente.sql
+@DDL/02-operacion.sql
 
 Prompt ========================================================
 Prompt Creacion de objetos completada

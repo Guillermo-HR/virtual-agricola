@@ -3,6 +3,7 @@
 --@Descripción:
 
 whenever sqlerror exit rollback
+set feedback off
 
 Prompt - Iniciando creacion de objetos para modulo cliente
 
@@ -132,4 +133,4 @@ create table cuenta (
     constraint cuenta_socio_id_fk foreign key (socio_id) references socio(socio_id)
 );
 
-Prompt - Creacion de objetos para modulo cliente completada
+Prompt > Creacion de objetos para modulo cliente completada
