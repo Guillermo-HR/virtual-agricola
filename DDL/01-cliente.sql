@@ -127,7 +127,7 @@ create table cuenta (
     constraint cuenta_pk primary key (cuenta_id),
     constraint cuenta_clabe_uk unique (clabe),
     constraint cuenta_clabe_chk check (length(clabe)=18),
-    CONSTRAINT cuenta_clabe_chk_num CHECK (REGEXP_LIKE(clabe, '^[0-9]{18}$')),
+    CONSTRAINT cuenta_clabe_chk_num check (REGEXP_LIKE(clabe, '^[0-9]{18}$')),
     constraint cuenta_banco_id_fk foreign key (banco_id) references banco(banco_id),
     constraint cuenta_socio_id_fk foreign key (socio_id) references socio(socio_id)
 );
