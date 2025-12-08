@@ -57,4 +57,6 @@ INSERT INTO puesto(clave, descripcion, sueldo, inicio_sueldo, fin_sueldo)
 INSERT INTO puesto(clave, descripcion, sueldo, inicio_sueldo, fin_sueldo)
     VALUES ('24APRO', 'Analista de Proyectos', 43900.55, TO_DATE('09-12-2021', 'DD-MM-YYYY'), null);
 
+COMMIT;
+
 Prompt > Insercion de registros en la tabla puesto completada
