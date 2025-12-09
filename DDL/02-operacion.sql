@@ -270,7 +270,7 @@ create table evidencia_operacion (
     numero_evidencia        number(2, 0) not null,
     foto                  blob not null,
     operacion_id          not null,
-    constraint evidencia_operacion_pk primary key (evidence_operacion_id),
+    constraint evidencia_operacion_pk primary key (evidencia_operacion_id),
     constraint evidencia_operacion_numero_evidencia_chk check (numero_evidencia > 0 and numero_evidencia <=10),
     constraint evidencia_operacion_numero_evidencia_operacion_uk unique (numero_evidencia, operacion_id),
     constraint evidencia_operacion_operacion_id_fk foreign key (operacion_id) references operacion(operacion_id)
