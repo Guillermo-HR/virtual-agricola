@@ -97,7 +97,7 @@ create table municipio (
 -- Tabla ubicacion
 create table ubicacion (
     ubicacion_id     number(5, 0) generated always as identity maxvalue 99999 not null,
-    clave            varchar2(10) not null,
+    clave            varchar2(5) not null,
     calle            varchar2(40) not null,
     numero           varchar2(10) not null,
     colonia          varchar2(40) not null,
@@ -110,7 +110,7 @@ create table ubicacion (
     municipio_id     not null,
     constraint ubicacion_pk primary key (ubicacion_id),
     constraint ubicacion_clave_uk unique (clave),
-    constraint ubicacion_clave_chk check (length(clave)=10),
+    constraint ubicacion_clave_chk check (length(clave)=5),
     constraint ubicacion_codigo_postal_chk check (length(codigo_postal)=5),
     constraint ubicacion_codigo_postal_chk_num check (regexp_like(codigo_postal, '^[0-9]{5}$')),
     constraint ubicacion_latitud_chk check (latitud between -90 and 90),
