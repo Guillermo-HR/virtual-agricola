@@ -45,6 +45,9 @@ BEGIN
             END;
         END LOOP;
     END LOOP;
+
+    COMMIT;
+
     DBMS_OUTPUT.PUT_LINE('> Insercion de registros en la tabla bodega completada');
 EXCEPTION
     WHEN OTHERS THEN
