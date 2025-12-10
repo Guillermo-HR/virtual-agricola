@@ -57,7 +57,7 @@ INSERT INTO puesto(clave, descripcion, sueldo, inicio_sueldo, fin_sueldo)
 INSERT INTO puesto(clave, descripcion, sueldo, inicio_sueldo, fin_sueldo)
     VALUES ('0APRO', 'Analista de Proyectos', 43900.55, TO_DATE('09-12-2021', 'DD-MM-YYYY'), null);
 INSERT INTO puesto(clave, descripcion, sueldo, inicio_sueldo, fin_sueldo)
-    VALUES ('GRNBD', 'Gerente de Bodega', 47200.33, TO_DATE('30-03-2020', 'DD-MM-YYYY'), null);
+    VALUES ('GRNCR', 'Gerente de Centro de resguardo', 47200.33, TO_DATE('30-03-2020', 'DD-MM-YYYY'), null);
 
 COMMIT;
 
