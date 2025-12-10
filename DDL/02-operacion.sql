@@ -66,7 +66,8 @@ create table empleado (
     constraint empleado_curp_uk unique (curp),
     constraint empleado_curp_chk check (length(curp)=18),
     constraint empleado_conductor_licencia_chk check (
-        es_conductor and licencia is not null
+        es_conductor and licencia is not null or
+        not es_conductor and licencia is null
     ),
     constraint empleado_puesto_id_fk foreign key (puesto_id) references puesto(puesto_id)
 );
