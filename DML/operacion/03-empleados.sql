@@ -8,11 +8,13 @@ Prompt - Iniciando creacion de procedimiento insertar_empleados
 
 CREATE OR REPLACE PROCEDURE INSERTAR_EMPLEADOS (
     p_n_empleados IN NUMBER,
-    p_n_choferes  IN NUMBER
+    p_n_choferes  IN NUMBER,
+    pn_gerentes   IN NUMBER
 )
 AS
-    v_total_registros NUMBER := p_n_empleados + p_n_choferes;
+    v_total_registros NUMBER := p_n_empleados + p_n_choferes + pn_gerentes;
     v_chofer_id       empleado.puesto_id%TYPE;
+    v_gerente_id      empleado.puesto_id%TYPE;
     v_nombre          empleado.nombre%TYPE;
     v_curp            empleado.curp%TYPE;
     v_es_conductor    empleado.es_conductor%TYPE;
@@ -58,6 +60,12 @@ BEGIN
     INTO v_chofer_id
     FROM puesto
     WHERE descripcion='Chofer Repartidor';
+
+    SELECT puesto_id 
+    INTO v_gerente_id
+    FROM puesto
+    WHERE descripcion='Gerente de Centro de resguardo';
+
     dbms_output.put_line(v_total_registros);
     FOR i IN 1..v_total_registros
     LOOP
@@ -69,12 +77,17 @@ BEGIN
             v_es_conductor := True;
             v_puesto_id := v_chofer_id;
             v_licencia := empty_blob();
+        ELSIF i <= p_n_choferes + pn_gerentes THEN
+            v_es_conductor := False;
+            v_puesto_id := v_gerente_id;
+            v_licencia := null;
         ELSE
             v_es_conductor := False;
             SELECT puesto_id
             INTO v_puesto_id
             FROM puesto
-            WHERE puesto_id != v_chofer_id
+            WHERE puesto_id != v_chofer_id AND
+                    puesto_id != v_gerente_id
             ORDER BY DBMS_RANDOM.VALUE
             FETCH FIRST 1 ROWS ONLY;
             v_licencia := null;
