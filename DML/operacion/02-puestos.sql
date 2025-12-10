@@ -56,6 +56,8 @@ INSERT INTO puesto(clave, descripcion, sueldo, inicio_sueldo, fin_sueldo)
     VALUES ('0TCOM', 'Técnico de Compras', 21850.12, TO_DATE('21-08-2022', 'DD-MM-YYYY'), TO_DATE('28-02-2024', 'DD-MM-YYYY'));
 INSERT INTO puesto(clave, descripcion, sueldo, inicio_sueldo, fin_sueldo)
     VALUES ('0APRO', 'Analista de Proyectos', 43900.55, TO_DATE('09-12-2021', 'DD-MM-YYYY'), null);
+INSERT INTO puesto(clave, descripcion, sueldo, inicio_sueldo, fin_sueldo)
+    VALUES ('GRNBD', 'Gerente de Bodega', 47200.33, TO_DATE('30-03-2020', 'DD-MM-YYYY'), null);
 
 COMMIT;
 
