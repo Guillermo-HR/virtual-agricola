@@ -122,7 +122,7 @@ create table ubicacion (
 create table centro_resguardo (
     centro_resguardo_id   number(4, 0) generated always as identity maxvalue 9999 not null,
     capacidad_maxima      number(6, 3) not null,
-    numero_bodegas        number(3, 0) not null,
+    numero_bodegas        number(2, 0) not null,
     gerente_id            not null,
     ubicacion_id          not null,
     constraint centro_resguardo_pk primary key (centro_resguardo_id),
