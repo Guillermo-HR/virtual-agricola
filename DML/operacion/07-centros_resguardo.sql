@@ -12,7 +12,8 @@ AS
     v_numero_bodegas     centro_resguardo.numero_bodegas%TYPE;
     v_gerente_id         centro_resguardo.gerente_id%TYPE;
     v_ubicacion_id       centro_resguardo.ubicacion_id%TYPE;
-    v_lim_capacidad      NUMBER;
+    v_lim_sup_capacidad      NUMBER;
+    v_lim_inf_capacidad      NUMBER;
     v_puesto_id_gerente  puesto.puesto_id%TYPE;
 
     CURSOR c_centros_pendientes IS
@@ -35,8 +36,9 @@ BEGIN
     LOOP
         v_ubicacion_id := r_centro.ubicacion_id;
         v_numero_bodegas := TRUNC(DBMS_RANDOM.VALUE(1, 31));
-        v_lim_capacidad := v_numero_bodegas * 99;
-        v_capacidad_maxima := ROUND(DBMS_RANDOM.VALUE(90, v_lim_capacidad), 3);
+        v_lim_sup_capacidad := v_numero_bodegas * 99;
+        v_lim_inf_capacidad := v_numero_bodegas * 70;
+        v_capacidad_maxima := ROUND(DBMS_RANDOM.VALUE(v_lim_inf_capacidad, v_lim_sup_capacidad), 3);
         SELECT empleado_id
         INTO v_gerente_id
         FROM empleado
