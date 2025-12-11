@@ -174,7 +174,7 @@ create table camion (
 
 -- Tabla tipo_producto_op
 create table tipo_producto_op (
-    tipo_producto_id  number(4, 0) generated always as identity maxvalue 9999 not null,
+    tipo_producto_id  number(4, 0) not null,
     nombre            varchar2(40) not null,
     activo            boolean not null,
     constraint tipo_producto_op_pk primary key (tipo_producto_id),
@@ -194,7 +194,6 @@ create table estatus_operacion (
 -- Tabla operacion
 create table operacion (
     operacion_id        number(6, 0) generated always as identity maxvalue 999999 not null,
-    socio_id_r          number(5, 0) not null,
     fecha_inicio        date not null,
     fecha_fin           date,
     tipo_operacion      varchar2(1) not null,
@@ -214,7 +213,6 @@ create table operacion (
     constraint operacion_cantidad_chk check (cantidad > 0),
     constraint operacion_precio_unitario_chk check (precio_unitario > 0),
     constraint operacion_comision_chk check (comision >= 0),
-    constraint operacion_total_chk check (total = (cantidad * precio_unitario) + comision),
     constraint operacion_origen_destino_chk check (origen_id != destino_id),
     constraint operacion_camion_id_fk foreign key (camion_id) references camion(camion_id),
     constraint operacion_chofer_id_fk foreign key (chofer_id) references empleado(empleado_id),
@@ -239,7 +237,7 @@ create table historico_estatus_operacion (
 
 -- Tabla cuenta_op
 create table cuenta_op (
-    cuenta_id      number(6, 0) generated always as identity maxvalue 999999 not null,
+    cuenta_id      number(6, 0),
     clabe          varchar2(18) not null,
     titular        varchar2(120) not null,
     banco          varchar2(40) not null,
