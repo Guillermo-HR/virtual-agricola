@@ -53,6 +53,8 @@ BEGIN
         END;
     END LOOP;
 
+    COMMIT;
+
     DBMS_OUTPUT.PUT_LINE('> Insercion de registros en la tabla camiones completada');
 EXCEPTION
     WHEN OTHERS THEN
