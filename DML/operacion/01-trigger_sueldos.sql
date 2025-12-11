@@ -23,8 +23,6 @@ BEGIN
             DBMS_OUTPUT.PUT_LINE('* Error al insertar historico_sueldo: ' || SQLERRM);
     END;
 
-    COMMIT;
-
     DBMS_OUTPUT.PUT_LINE('> Insercion de registro en la tabla historico_sueldo completada');
 EXCEPTION
     WHEN OTHERS THEN
