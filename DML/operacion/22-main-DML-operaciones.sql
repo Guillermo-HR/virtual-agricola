@@ -4,9 +4,6 @@
 
 whenever sqlerror exit rollback
 
--- Quitar esto despues de pruebas 
-@DDL/02-operacion.sql
-
 Prompt =========================================================
 Prompt Iniciando creacion de triggers modulo operacion
 Prompt =========================================================
@@ -41,8 +38,10 @@ Prompt =========================================================
 @DML/operacion/07-centros_resguardo.sql
 @DML/operacion/08-bodegas.sql
 @DML/operacion/10-camiones.sql
+@DML/operacion/11-tipo_productos_op.sql
 @DML/operacion/14-operaciones.sql
 @DML/operacion/15-cancelar_iniciar_operaciones.sql
+@DML/operacion/16-cuentas_op.sql
 @DML/operacion/17-pago_ventas.sql
 @DML/operacion/18-evidencias_operacion.sql
 @DML/operacion/19-rastreo_transportes.sql
@@ -50,22 +49,3 @@ Prompt =========================================================
 Prompt =========================================================
 Prompt Creacion de procedimientos modulo operacion completada
 Prompt =========================================================
-
--- quitar esto despues de pruebas
-set SERVEROUTPUT ON
-exec INSERTAR_EMPLEADOS(1, 1, 1)
-exec INSERTAR_UBICACIONES(1, 1)
-exec INSERTAR_CENTRO_RESGUARDO
-exec INSERTAR_BODEGAS
-exec INSERTAR_CAMIONES(1)
--- En lo que hago la sincronizacion
-insert into tipo_producto_op(tipo_producto_id, nombre, activo) 
-    values (1, 'Granos', TRUE);
-insert into cuenta_op (cuenta_id, clabe, titular, banco, activo)
-    values (1, '012345678901234567', 'Juan Perez', 'Banco Ejemplo', TRUE);
---exec INSERTAR_OPERACIONES(1, 0, to_date('10-12-2025', 'DD-MM-YYYY'))
--- exec 
---exec INSERTAR_PAGO_VENTAS
---update operacion set estatus_operacion_id = 2, fecha_status=to_date('11-12-2025', 'DD-MM-YYYY') where operacion_id = 1;
---exec INSERTAR_EVIDENCIAS_OPERACION
---exec INSERTAR_RASTREO_TRANSPORTE(to_date('12-12-2025', 'DD-MM-YYYY'))
