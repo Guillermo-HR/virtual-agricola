@@ -53,9 +53,8 @@ BEGIN
 
             SELECT ubicacion_id 
             INTO v_destino_id
-            FROM ubicacion
-            WHERE es_centro_resguardo AND
-                (capacidad_maxima - espacio_usado) > 0
+            FROM centro_resguardo
+            WHERE (capacidad_maxima - espacio_usado) > 0
             ORDER BY DBMS_RANDOM.VALUE
             FETCH FIRST 1 ROW ONLY;
             
@@ -71,9 +70,8 @@ BEGIN
             v_tipo_operacion := 'V';
             SELECT ubicacion_id 
             INTO v_origen_id
-            FROM ubicacion
-            WHERE es_centro_resguardo AND
-                espacio_usado > 0
+            FROM centro_resguardo
+            WHERE espacio_usado > 0
             ORDER BY DBMS_RANDOM.VALUE
             FETCH FIRST 1 ROW ONLY;
 
