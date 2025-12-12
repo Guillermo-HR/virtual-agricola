@@ -6,7 +6,9 @@ whenever sqlerror exit rollback
 
 Prompt - Iniciando creacion de procedimiento insertar_rastreo_transporte
 
-CREATE OR REPLACE PROCEDURE INSERTAR_RASTREO_TRANSPORTE
+CREATE OR REPLACE PROCEDURE INSERTAR_RASTREO_TRANSPORTE (
+    p_dia IN DATE
+)
 AS
     v_latitud_origen   ubicacion.latitud%TYPE;
     v_longitud_origen  ubicacion.longitud%TYPE;
@@ -40,7 +42,7 @@ AS
         LEFT JOIN
             rastreo_transporte rt ON o.operacion_id = rt.operacion_id
         WHERE
-            o.estatus_operacion_id = 3 AND
+            o.estatus_operacion_id = 2 AND
             rt.operacion_id IS NULL;
 BEGIN
     DBMS_OUTPUT.PUT_LINE('- Iniciando insercion de registros en tabla rastreo_transporte');
@@ -55,7 +57,18 @@ BEGIN
 
         v_latitud_actual := v_latitud_origen;
         v_longitud_actual := v_longitud_origen;
-        v_fecha_hora_actual := r_operacion.fecha_status;
+        v_random_minutos_inicio := TRUNC(DBMS_RANDOM.VALUE(7*60, 13*60));
+        v_fecha_hora_actual := p_dia + NUMTODSINTERVAL(v_random_minutos_inicio, 'MINUTE');
+
+        BEGIN
+            UPDATE operacion
+            SET estatus_operacion_id = 3,
+                fecha_status = v_fecha_hora_actual
+            WHERE operacion_id = v_operacion_id;
+        EXCEPTION
+            WHEN OTHERS THEN
+                dbms_output.put_line('* Error al actualizar operacion ID ' || v_operacion_id || ': ' || SQLERRM);
+        END;
 
         v_sentido_latitud := CASE
                                 WHEN v_latitud_destino > v_latitud_origen THEN 1
@@ -90,6 +103,29 @@ BEGIN
                     dbms_output.put_line('* Error al insertar rastreo_transporte para operacion_id ' || v_operacion_id || ': ' || SQLERRM);
             END;
         END LOOP;
+
+        v_fecha_hora_actual := v_fecha_hora_actual + NUMTODSINTERVAL(10, 'MINUTE');
+        v_observaciones := 'En destino';
+
+            BEGIN
+                INSERT INTO rastreo_transporte (fecha_hora, latitud, longitud, observaciones, folio_gps, operacion_id)
+                VALUES (v_fecha_hora_actual, v_latitud_actual, v_longitud_actual, v_observaciones, v_folio_gps, v_operacion_id);
+            EXCEPTION
+                WHEN OTHERS THEN
+                    dbms_output.put_line('* Error al insertar rastreo_transporte para operacion_id ' || v_operacion_id || ': ' || SQLERRM);
+            END;
+
+        BEGIN
+            UPDATE operacion
+            SET estatus_operacion_id = 5,
+                fecha_status = v_fecha_hora_actual
+            WHERE operacion_id = v_operacion_id;
+        EXCEPTION
+            WHEN OTHERS THEN
+                dbms_output.put_line('* Error al actualizar operacion ID ' || v_operacion_id || ': ' || SQLERRM);
+        END;
+
+
     END LOOP;
 
         
@@ -101,6 +137,5 @@ EXCEPTION
         RAISE;
 END;
 /
-show errors
 
 Prompt > Creacion de procedimiento insertar_rastreo_transporte completada
