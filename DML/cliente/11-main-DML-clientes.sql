@@ -4,6 +4,8 @@
 
 whenever sqlerror exit rollback
 
+connect admin_cliente/1234@cliente
+
 Prompt =========================================================
 Prompt Iniciando insercion de datos en tablas catalogo modulo cliente
 Prompt =========================================================
