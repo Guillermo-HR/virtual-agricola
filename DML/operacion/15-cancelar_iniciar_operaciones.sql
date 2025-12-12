@@ -61,6 +61,3 @@ EXCEPTION
         DBMS_OUTPUT.PUT_LINE('* Error al cancelar o iniciar operaciones: ' || SQLERRM);
 END CANCELAR_INICIAR_OPERACIONES;
 /
-
-
-show errors 
