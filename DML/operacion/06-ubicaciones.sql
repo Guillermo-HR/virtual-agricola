@@ -109,6 +109,9 @@ BEGIN
                 DBMS_OUTPUT.PUT_LINE('* Error al insertar ubicacion ' || v_clave || ': ' || SQLERRM);
         END;
     END LOOP;
+
+    COMMIT;
+    
     DBMS_OUTPUT.PUT_LINE('> Insercion de registros en la tabla ubicaciones completada');
 EXCEPTION
     WHEN OTHERS THEN
