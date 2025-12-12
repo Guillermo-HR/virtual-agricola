@@ -6,7 +6,7 @@
 connect c##sys_modulos_virtualAgricola/1234 as sysdba; 
 
 whenever sqlerror exit rollback
-set feedback off
+set feedback on
 
 -----
 -- Módulo "cliente"
@@ -21,7 +21,7 @@ drop user if exists admin_cliente cascade;
 --- Usuario administrador
 
 create user admin_cliente identified by 1234; 
-grant create session, create table,create procedure,create view,create sequence to admin_cliente; 
+grant create session, create table,create procedure,create view,create sequence, create trigger to admin_cliente; 
 
 
 
@@ -49,7 +49,7 @@ drop user if exists admin_operacion cascade;
 -- Usuario administrador
 
 create user admin_operacion identified by 1234; 
-grant create session,create table,create procedure,create view,create sequence to admin_operacion; 
+grant create session,create table,create procedure,create view,create sequence,create trigger to admin_operacion; 
 
 
 -- Administracion de quotas
@@ -66,5 +66,3 @@ alter user admin_operacion quota unlimited on operacion_c0_index_ts;
 alter user admin_operacion default tablespace operacion_c0_data_ts; 
 
 Prompt > Usuarios administradores de las pdbs creados! 
-
-exit

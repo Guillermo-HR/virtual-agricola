@@ -4,6 +4,9 @@
 
 whenever sqlerror exit rollback
 
+
+connect admin_operacion/1234@operacion 
+
 Prompt =========================================================
 Prompt Iniciando creacion de triggers modulo operacion
 Prompt =========================================================

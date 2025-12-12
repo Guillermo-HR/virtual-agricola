@@ -40,8 +40,6 @@ END;
 /
 
 
-
-
 alter session set CONTAINER=operacion; 
 
 -- Limpieza 
@@ -74,9 +72,6 @@ BEGIN
     -- Los GRANTs son DDL y se confirman automáticamente (COMMIT)
 END; 
 /
- 
-
-EXIT
 
     
 

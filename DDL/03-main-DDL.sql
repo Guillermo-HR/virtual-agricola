@@ -14,3 +14,9 @@ Prompt ========================================================
 Prompt ========================================================
 Prompt Creacion de objetos completada
 Prompt ========================================================
+
+Prompt ========================================================
+Prompt Otorgando permisos solobre las tablas creadas
+Prompt =======================================================
+
+@scripts-creacion/s-15-crea-usuarios-pdb.sql

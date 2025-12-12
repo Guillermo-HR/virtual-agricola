@@ -150,4 +150,6 @@ EXCEPTION
 END;
 /
 
+show errors 
+
 Prompt > Creacion de procedimiento insertar_operaciones completada

@@ -444,5 +444,3 @@ create index
 compra_descarga_operacion_id_fk_idx on compra_descarga(operacion_id) tablespace operacion_c0_index_ts; 
 
 Prompt > Creacion de objetos para modulo operacion completada
-
-exit
