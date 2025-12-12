@@ -26,6 +26,8 @@ AS
     v_tipo_producto_id operacion.tipo_producto_id%TYPE;
     v_puesto_id_chofer puesto.puesto_id%TYPE;
     v_estatus_id_programada estatus_operacion.estatus_operacion_id%TYPE;
+    v_cantidad_maxima NUMBER;
+    v_cantidad_minima NUMBER;
 
 BEGIN
     DBMS_OUTPUT.PUT_LINE('- Iniciando insercion de registros en tabla operacion');
@@ -52,17 +54,32 @@ BEGIN
             SELECT ubicacion_id 
             INTO v_destino_id
             FROM ubicacion
-            WHERE es_centro_resguardo
+            WHERE es_centro_resguardo AND
+                (capacidad_maxima - espacio_usado) > 0
             ORDER BY DBMS_RANDOM.VALUE
             FETCH FIRST 1 ROW ONLY;
+            
+            IF SQL%NOTFOUND THEN
+                RAISE_APPLICATION_ERROR(-20003, 'No hay centros de resguardo disponibles');
+            END IF;
+
+            SELECT ROUND((capacidad_maxima - espacio_usado)*0.4, 3)
+            INTO v_cantidad_maxima
+            FROM centro_resguardo 
+            WHERE ubicacion_id = v_destino_id;
         ELSE
             v_tipo_operacion := 'V';
             SELECT ubicacion_id 
             INTO v_origen_id
             FROM ubicacion
-            WHERE es_centro_resguardo
+            WHERE es_centro_resguardo AND
+                espacio_usado > 0
             ORDER BY DBMS_RANDOM.VALUE
             FETCH FIRST 1 ROW ONLY;
+
+            IF SQL%NOTFOUND THEN
+                RAISE_APPLICATION_ERROR(-20003, 'No hay centros de resguardo disponibles');
+            END IF;
 
             SELECT ubicacion_id 
             INTO v_destino_id
@@ -70,9 +87,15 @@ BEGIN
             WHERE not es_centro_resguardo
             ORDER BY DBMS_RANDOM.VALUE
             FETCH FIRST 1 ROW ONLY;
+
+            SELECT ROUND(espacio_usado*0.4, 3)
+            INTO v_cantidad_maxima
+            FROM centro_resguardo 
+            WHERE ubicacion_id = v_destino_id;
         END IF;
 
-        v_cantidad := ROUND(DBMS_RANDOM.VALUE(30, 150), 3);
+        v_cantidad_minima := ROUND(v_cantidad_maxima * 0.3, 3);
+        v_cantidad := ROUND(DBMS_RANDOM.VALUE(v_cantidad_minima, v_cantidad_maxima), 3);
         v_precio_unitario := ROUND(DBMS_RANDOM.VALUE(500, 3000), 2);
         v_pct_comision := ROUND(DBMS_RANDOM.VALUE(0.05, 0.1), 2);
         v_comision := ROUND(v_cantidad * v_precio_unitario * v_pct_comision, 2);
@@ -97,6 +120,15 @@ BEGIN
         FETCH FIRST 1 ROW ONLY;
 
         BEGIN
+            IF v_tipo_operacion = 'C' THEN
+                UPDATE centro_resguardo
+                SET espacio_usado = espacio_usado + v_cantidad
+                WHERE ubicacion_id = v_destino_id;
+            ELSE
+                UPDATE centro_resguardo
+                SET espacio_usado = espacio_usado - v_cantidad
+                WHERE ubicacion_id = v_origen_id;
+            END IF;
             INSERT INTO operacion (fecha_inicio, fecha_fin, tipo_operacion, cantidad, precio_unitario, comision, total, 
                                    fecha_status, camion_id, chofer_id, estatus_operacion_id, origen_id, destino_id, tipo_producto_id)
             VALUES (p_fecha_inicio, null, v_tipo_operacion, v_cantidad, v_precio_unitario, v_comision, v_total, 
