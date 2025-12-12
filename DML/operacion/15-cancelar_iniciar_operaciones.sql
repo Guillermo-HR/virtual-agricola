@@ -14,7 +14,7 @@ AS
     v_random_se_cancela NUMBER;
 
     CURSOR c_operaciones_activas IS
-        SELECT operacion_id, tipo_operacion, cantidad
+        SELECT operacion_id, tipo_operacion, cantidad, origen_id, destino_id
         FROM operacion
         WHERE estatus_operacion_id=1;
 
@@ -31,11 +31,11 @@ BEGIN
                 IF r_operacion.tipo_operacion = 'C' THEN
                     UPDATE centro_resguardo
                     SET espacio_usado = espacio_usado - r_operacion.cantidad
-                    WHERE ubicacion_id = v_destino_id;
+                    WHERE ubicacion_id = r_operacion.destino_id;
                 ELSE
                     UPDATE centro_resguardo
                     SET espacio_usado = espacio_usado + r_operacion.cantidad
-                    WHERE ubicacion_id = v_origen_id;
+                    WHERE ubicacion_id = r_operacion.origen_id;
                 END IF;
             EXCEPTION
                 WHEN OTHERS THEN
