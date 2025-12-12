@@ -23,7 +23,7 @@ AS
             pago_venta pv ON o.operacion_id = pv.operacion_id
         WHERE
             o.tipo_operacion = 'V' AND
-            o.estatus_operacion_id != 4 AND
+            o.estatus_operacion_id = 2 AND
             pv.operacion_id IS NULL;
 
 BEGIN

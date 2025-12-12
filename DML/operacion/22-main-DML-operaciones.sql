@@ -41,10 +41,11 @@ Prompt =========================================================
 @DML/operacion/07-centros_resguardo.sql
 @DML/operacion/08-bodegas.sql
 @DML/operacion/10-camiones.sql
-@DML/operacion/13-trigger_estatus_operaciones.sql
-@DML/operacion/16-pago_ventas.sql
-@DML/operacion/17-evidencias_operacion.sql
-@DML/operacion/18-rastreo_transportes.sql
+@DML/operacion/14-operaciones.sql
+@DML/operacion/15-cancelar_iniciar_operaciones.sql
+@DML/operacion/17-pago_ventas.sql
+@DML/operacion/18-evidencias_operacion.sql
+@DML/operacion/19-rastreo_transportes.sql
 
 Prompt =========================================================
 Prompt Creacion de procedimientos modulo operacion completada
@@ -60,10 +61,11 @@ exec INSERTAR_CAMIONES(1)
 -- En lo que hago la sincronizacion
 insert into tipo_producto_op(tipo_producto_id, nombre, activo) 
     values (1, 'Granos', TRUE);
-exec INSERTAR_OPERACIONES(1, 1, to_date('10-12-2025', 'DD-MM-YYYY'))
 insert into cuenta_op (cuenta_id, clabe, titular, banco, activo)
     values (1, '012345678901234567', 'Juan Perez', 'Banco Ejemplo', TRUE);
-exec INSERTAR_PAGO_VENTAS
-update operacion set estatus_operacion_id = 2, fecha_status=to_date('11-12-2025', 'DD-MM-YYYY') where operacion_id = 1;
-exec INSERTAR_EVIDENCIAS_OPERACION
-exec INSERTAR_RASTREO_TRANSPORTE(to_date('12-12-2025', 'DD-MM-YYYY'))
+--exec INSERTAR_OPERACIONES(1, 0, to_date('10-12-2025', 'DD-MM-YYYY'))
+-- exec 
+--exec INSERTAR_PAGO_VENTAS
+--update operacion set estatus_operacion_id = 2, fecha_status=to_date('11-12-2025', 'DD-MM-YYYY') where operacion_id = 1;
+--exec INSERTAR_EVIDENCIAS_OPERACION
+--exec INSERTAR_RASTREO_TRANSPORTE(to_date('12-12-2025', 'DD-MM-YYYY'))

@@ -62,8 +62,7 @@ BEGIN
 
         BEGIN
             UPDATE operacion
-            SET estatus_operacion_id = 3,
-                fecha_status = v_fecha_hora_actual
+            SET estatus_operacion_id = 3, fecha_status = v_fecha_hora_actual
             WHERE operacion_id = v_operacion_id;
         EXCEPTION
             WHEN OTHERS THEN
@@ -117,8 +116,7 @@ BEGIN
 
         BEGIN
             UPDATE operacion
-            SET estatus_operacion_id = 5,
-                fecha_status = v_fecha_hora_actual
+            SET estatus_operacion_id = 5, fecha_status = v_fecha_hora_actual
             WHERE operacion_id = v_operacion_id;
         EXCEPTION
             WHEN OTHERS THEN
