@@ -36,7 +36,7 @@ BEGIN
         v_operacion_id := r_pago.operacion_id;
         SELECT cuenta_id 
         INTO v_cuenta_id
-        FROM cuenta
+        FROM cuenta_op
         ORDER BY DBMS_RANDOM.VALUE
         FETCH FIRST 1 ROWS ONLY;
         FOR i IN 1..v_n_pagos
