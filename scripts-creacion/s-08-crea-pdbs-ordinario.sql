@@ -9,7 +9,7 @@ connect sys/system2 as sysdba
 whenever sqlerror exit rollback
 
 create pluggable database cliente
-    admin user cliente_admin identified by 1234
+    admin user cliente_admin_fake identified by 1234
     path_prefix = '/unam/bda/discos/disk4/app/oracle/oradata/FREE/'
     file_name_convert = ('/pdbseed/','/cliente/');
 
@@ -22,7 +22,7 @@ alter pluggable database cliente save state;
 connect sys/system2 as sysdba 
 
 create pluggable database operacion
-    admin user operacion_admin identified by 1234
+    admin user operacion_admin_fake identified by 1234
     path_prefix = '/unam/bda/discos/disk4/app/oracle/oradata/FREE/'
     file_name_convert = ('/pdbseed/','/operacion/');
 

@@ -44,4 +44,17 @@ mkdir -p ${UNAM_HOME}/bda/discos/disk7
 mkdir -p ${UNAM_HOME}/bda/discos/disk8
 
 
+# Disk9
+
+mkdir -p ${UNAM_HOME}/bda/discos/disk9
+
+
+# Diks 10 
+
+mkdir -p ${UNAM_HOME}/bda/discos/disk10
+
+
+
+
+
 

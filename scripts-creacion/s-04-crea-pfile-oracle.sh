@@ -15,7 +15,7 @@ echo \
 "db_name=${ORACLE_SID}
 memory_target=768M
 control_files=(
-/unam/bda/discos/disk1/app/oracle/oradata/${ORACLE_SID^^}/control01.ctl, /unam/bda/discos/disk2/app/oracle/oradata/${ORACLE_SID^^}/control02.ctl,)
+/unam/bda/discos/disk1/app/oracle/oradata/${ORACLE_SID^^}/control01.ctl, /unam/bda/discos/disk2/app/oracle/oradata/${ORACLE_SID^^}/control02.ctl)
 db_domain=fi.unam
 enable_pluggable_database=true">$pfile
 
