@@ -14,6 +14,8 @@ drop user if exists cliente_app;
 create user cliente_app identified by 1234; 
 grant create session to cliente_app; 
 
+alter user cliente_app quota unlimited on users; 
+
 
 DECLARE
     -- No se necesita un cursor explícito ni variables intermedias.
@@ -38,6 +40,8 @@ END;
 /
 
 
+
+
 alter session set CONTAINER=operacion; 
 
 -- Limpieza 
@@ -45,6 +49,9 @@ drop user if exists operacion_app;
 
 create user operacion_app identified by 1234; 
 grant create session to operacion_app;
+
+alter user operacion_app quota unlimited on users; 
+
 
 DECLARE
     -- No se necesita un cursor explícito ni variables intermedias.

@@ -6,11 +6,8 @@
 
 connect c##sys_modulos_virtualAgricola/1234 as sysdba
 
-alter database flashback on;
-alter system set db_recovery_file_dest='/unam/app/oracle/fast_recovery/FREE';
-alter system set db_recovery_file_dest_size=1G;
-
-alter database add logfile group 
+alter database flashback off;
+alter system set db_recovery_file_dest=' ';
 
 
 

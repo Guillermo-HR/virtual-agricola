@@ -86,7 +86,7 @@ mkdir -p archivelogs/
 chown -R oracle:oinstall archivelogs 
 chmod -R 750 archivelogs
 mkdir -p backups/
-chown -R oracle:onistall backups
+chown -R oracle:oistall backups
 chmod -R 750 backups
 
 

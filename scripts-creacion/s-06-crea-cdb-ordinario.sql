@@ -3,9 +3,12 @@
 --@Descripción:    Crea una CDB
 
 connect sys/Hola1234* as sysdba
-startup nomount
+
 
 whenever sqlerror exit rollback
+
+
+create spfile from pfile;
 
 create database free
     user sys IDENTIFIED by system2
