@@ -7,7 +7,7 @@ EXEC LLENAR_MODULO_CLIENTE(50, 50, 30)
 -- productores, compradores, productores-compradores
 connect admin_operacion/1234@operacion
 
-EXEC INSERTAR_EMPLEADOS(100, 40, 30) -- cualquier tipo, choferes, gerentes
+EXEC INSERTAR_EMPLEADOS(100, 40, 30)
 EXEC INSERTAR_UBICACIONES(70, 130) -- centro resguardo, oras ubicaciones
 EXEC INSERTAR_CENTRO_RESGUARDO
 EXEC INSERTAR_BODEGAS
