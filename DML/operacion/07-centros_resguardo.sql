@@ -9,6 +9,7 @@ Prompt - Iniciando creacion de procedimiento insertar_centro_resguardo
 CREATE OR REPLACE PROCEDURE INSERTAR_CENTRO_RESGUARDO
 AS
     v_capacidad_maxima   centro_resguardo.capacidad_maxima%TYPE;
+    v_espacio_usado        centro_resguardo.espacio_usado%TYPE:= 0;
     v_numero_bodegas     centro_resguardo.numero_bodegas%TYPE;
     v_gerente_id         centro_resguardo.gerente_id%TYPE;
     v_ubicacion_id       centro_resguardo.ubicacion_id%TYPE;
@@ -46,9 +47,9 @@ BEGIN
         ORDER BY DBMS_RANDOM.VALUE
         FETCH FIRST 1 ROWS ONLY;
 
-        BEGIN 
-            INSERT INTO centro_resguardo (capacidad_maxima, numero_bodegas, gerente_id, ubicacion_id)
-            VALUES (v_capacidad_maxima, v_numero_bodegas, v_gerente_id, v_ubicacion_id);
+        BEGIN
+            INSERT INTO centro_resguardo (capacidad_maxima, espacio_usado, numero_bodegas, gerente_id, ubicacion_id)
+            VALUES (v_capacidad_maxima, v_espacio_usado, v_numero_bodegas, v_gerente_id, v_ubicacion_id);
         EXCEPTION
             WHEN OTHERS THEN
                 DBMS_OUTPUT.PUT_LINE('* Error al insertar centro_resguardo en ubicacion_id ' || v_ubicacion_id || ': ' || SQLERRM);

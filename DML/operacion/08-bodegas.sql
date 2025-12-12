@@ -12,7 +12,7 @@ AS
     v_capacidad_maxima centro_resguardo.capacidad_maxima%TYPE;
     v_tiene_control_temp bodega.tiene_control_temperatura%TYPE;
     v_capacidad_bodegas  bodega.capacidad_maxima%TYPE;
-    v_capacidad_actual   bodega.capacidad_actual%TYPE:= 0;
+    v_espacio_usado      bodega.espacio_usado%TYPE:= 0;
     v_centro_resguardo_id bodega.centro_resguardo_id%TYPE;
 
     CURSOR c_centros_pendientes IS
@@ -37,8 +37,8 @@ BEGIN
         LOOP
             v_tiene_control_temp := TRUNC(DBMS_RANDOM.VALUE(0, 2)) = 1;
             BEGIN
-                INSERT INTO bodega (numero_bodega, tiene_control_temperatura, capacidad_maxima, capacidad_actual, centro_resguardo_id)
-                VALUES (i, v_tiene_control_temp, v_capacidad_bodegas, v_capacidad_actual, v_centro_resguardo_id);
+                INSERT INTO bodega (numero_bodega, tiene_control_temperatura, capacidad_maxima, espacio_usado, centro_resguardo_id)
+                VALUES (i, v_tiene_control_temp, v_capacidad_bodegas, v_espacio_usado, v_centro_resguardo_id);
             EXCEPTION
                 WHEN OTHERS THEN
                     DBMS_OUTPUT.PUT_LINE('* Error al insertar bodega en centro_resguardo_id ' || v_centro_resguardo_id || ': ' || SQLERRM);
