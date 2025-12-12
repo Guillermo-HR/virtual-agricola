@@ -155,6 +155,7 @@ create index ubicacion_municipio_id_fk_idx on ubicacion(municipio_id) tablespace
 create table centro_resguardo (
     centro_resguardo_id   number(4, 0) generated always as identity maxvalue 9999 not null,
     capacidad_maxima      number(7, 3) not null,
+    espacio_usado         number(7, 3) not null,
     numero_bodegas        number(2, 0) not null,
     gerente_id            not null,
     ubicacion_id          not null,
@@ -177,12 +178,12 @@ create table bodega (
     numero_bodega     number(3, 0) not null,
     tiene_control_temperatura boolean not null,
     capacidad_maxima   number(5, 3) not null,
-    capacidad_actual   number(5, 3) not null,
+    espacio_usado   number(5, 3) not null,
     centro_resguardo_id not null,
     constraint bodega_pk primary key (bodega_id) USING INDEX TABLESPACE operacion_c0_index_ts,
     constraint bodega_numero_uk unique (numero_bodega, centro_resguardo_id) USING INDEX TABLESPACE operacion_c0_index_ts,
     constraint bodega_capacidad_maxima_chk check (capacidad_maxima > 0),
-    constraint bodega_capacidad_actual_chk check (capacidad_actual >= 0 and capacidad_actual <= capacidad_maxima),
+    constraint bodega_espacio_usado_chk check (espacio_usado >= 0 and espacio_usado <= capacidad_maxima),
     constraint bodega_centro_resguardo_id_fk foreign key (centro_resguardo_id) references centro_resguardo(centro_resguardo_id)
 )
 segment creation immediate
