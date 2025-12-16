@@ -33,6 +33,3 @@ cd ${UNAM_HOME}/bda/discos/disk9
 chown -R oracle:oinstall app
 chmod -R 750 app 
 
-
-
-# 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
