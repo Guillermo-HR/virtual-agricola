@@ -33,6 +33,8 @@ echo "--------- Incremental 0  -------------"
 # Backup Full (Incremental Level 0) a la FRA 
 rman target / cmdfile=${ORA_SCRIPTS}/scripts_creacion_config_base/s-xx-backup-lvl0.rman
 
+sqlplus -S /nolog @${ORA_SCRIPTS}/consultas/q12-backup-summary.sql
+
 # --------------------------------------------------------------------------
 # LUNES: Operación + Diferencial
 # --------------------------------------------------------------------------
@@ -56,6 +58,8 @@ echo "--------- Diferencial 1  -------------"
 
 rman target / cmdfile=${ORA_SCRIPTS}/scripts_creacion_config_base s-xx-backup-lvl1-diff.rman
 
+sqlplus -S /nolog @${ORA_SCRIPTS}/consultas/q12-backup-summary.sql
+
 # --------------------------------------------------------------------------
 # Viernes: Operación + Diferencial
 # --------------------------------------------------------------------------
@@ -72,6 +76,8 @@ sqlplus -S /nolog @${ORA_SCRIPTS}/simulacion/insert-4.sql
 
 rman target / cmdfile=${ORA_SCRIPTS}/scripts_creacion_config_base/s-xx-backup-lvl1-acum.rman
 
+sqlplus -S /nolog @${ORA_SCRIPTS}/consultas/q12-backup-summary.sql
+
 # --------------------------------------------------------------------------
 # LUNES: Operación + Diferencial
 # --------------------------------------------------------------------------
@@ -87,6 +93,8 @@ sqlplus -S /nolog @${ORA_SCRIPTS}/simulacion/insert-6.sql
 
 rman target / cmdfile=${ORA_SCRIPTS}/scripts_creacion_config_base/s-xx-backup-lvl1-diff.rman
 
+sqlplus -S /nolog @${ORA_SCRIPTS}/consultas/q12-backup-summary.sql
+
 # --------------------------------------------------------------------------
 # Viernes: Operación + Diferencial
 # --------------------------------------------------------------------------
@@ -95,6 +103,7 @@ sqlplus -S /nolog @${ORA_SCRIPTS}/simulacion/insert-7.sql
 
 rman target / cmdfile=${ORA_SCRIPTS}/scripts_creacion_config_base/s-xx-backup-lvl1-diff.rman
 
+
 # --------------------------------------------------------------------------
 # Domingo: Operación + Acumulativo
 # --------------------------------------------------------------------------
@@ -102,3 +111,5 @@ rman target / cmdfile=${ORA_SCRIPTS}/scripts_creacion_config_base/s-xx-backup-lv
 sqlplus -S /nolog @${ORA_SCRIPTS}/simulacion/insert-8.sql
 
 rman target / cmdfile=${ORA_SCRIPTS}/scripts_creacion_config_base/s-xx-backup-lvl1-acum.rman
+
+sqlplus -S /nolog @${ORA_SCRIPTS}/consultas/q12-backup-summary.sql

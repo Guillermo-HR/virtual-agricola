@@ -51,7 +51,7 @@ create tablespace cliente_c0_index_ts
 
 create bigfile tablespace cliente_c2_lobs_ts
     datafile '/unam/bda/discos/disk6/app/oracle/oradata/FREE/cliente/cliente_c2_lobs_ts_01.dbf'
-    size 2G
+    size 500m
     reuse
     autoextend on next 200m maxsize unlimited
     extent management local
@@ -101,7 +101,7 @@ create tablespace operacion_c0_data_ts
 
 create tablespace operacion_c2_coldlob_ts
     datafile '/unam/bda/discos/disk6/app/oracle/oradata/FREE/operacion/operacion_c2_coldLob_ts_01.dbf'
-    size 1G
+    size 500m
     reuse
     autoextend on next 500m maxsize unlimited
     extent management local
@@ -110,9 +110,9 @@ create tablespace operacion_c2_coldlob_ts
 
 create bigfile tablespace operacion_c1_hotlob_ts
     datafile '/unam/bda/discos/disk9/app/oracle/oradata/FREE/operacion/operacion_c2_hotLob_ts_01.dbf'
-    size 6G
+    size 1G
     reuse
-    AUTOEXTEND on next 3G maxsize unlimited
+    AUTOEXTEND on next 500m maxsize unlimited
     extent management local
     segment space management auto
 ; 

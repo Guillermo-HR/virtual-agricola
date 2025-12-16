@@ -8,19 +8,7 @@ RUN {
     BACKUP AS BACKUPSET INCREMENTAL LEVEL 0 DATABASE TAG 'LVL0_FRA_BASE';
 
     BACKUP AS BACKUPSET ARCHIVELOG ALL DELETE INPUT  TAG 'ARCH_FRA_BASE';
-
-    # ---------------------------------------------------------
-    # Persistencia en HDD
-    # ---------------------------------------------------------
-    # Copiamos los BackupSets recien creados hacia los discos seguros.
-    
-    
-    BACKUP BACKUPSET FROM TAG 'LVL0_FRA_BASE'
-    FORMAT '/unam/bda/discos/disk10/backups/mirror_lvl0_seti_%U';
-
-    BACKUP BACKUPSET FROM TAG 'ARCH_FRA_BASE'
-    FORMAT '/unam/bda/discos/disk10/backups/mirror_lvl0_arch_%U';
-
+ 
     DELETE NOPROMPT OBSOLETE;
 }
 

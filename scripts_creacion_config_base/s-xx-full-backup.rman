@@ -7,10 +7,7 @@
 # -----------------------------------------------------------
 
 RUN {
-    BACKUP DATABASE TAG 'FULL_DB_BACKUP';
-            
-    BACKUP ARCHIVELOG ALL DELETE INPUT TAG 'FULL_ARCHIVELOGS_CLEANUP'; 
-        
+    BACKUP DATABASE PLUS ARCHIVELOG TAG 'FULL_DB_BACKUP';        
     DELETE NOPROMPT OBSOLETE;
 }
 
