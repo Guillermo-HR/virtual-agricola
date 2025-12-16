@@ -19,4 +19,4 @@ Prompt ========================================================
 Prompt Otorgando permisos solobre las tablas creadas
 Prompt =======================================================
 
-@scripts-creacion/s-15-crea-usuarios-pdb.sql
+@scripts_creacion_config_base/s-15-crea-usuarios-pdb_ordinario.sql

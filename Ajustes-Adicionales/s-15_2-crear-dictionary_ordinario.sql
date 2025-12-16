@@ -24,5 +24,3 @@ grant read, write  on directory files_modulo_operacion to operacion_app;
 
 Prompt -> Listo
 Prompt =======================================
-
-exit

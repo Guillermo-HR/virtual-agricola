@@ -1,32 +1,32 @@
 connect admin_operacion/1234@operacion
 
-create or replace procedure carga_img_fachada IS
+create or replace procedure carga_img_camion IS
    v_bfile  bfile;
    v_blob   blob;
    v_foto   varchar2(20);
    v_img_id number;
 
-   CURSOR ubicacion_fachada IS
-    SELECT ubicacion_id
-    FROM ubicacion
-    WHERE fachada is not null AND DBMS_LOB.GETLENGTH(fachada) = 0; 
+   CURSOR camion_foto IS
+    SELECT camion_id
+    FROM camion
+    WHERE foto is not null AND DBMS_LOB.GETLENGTH(foto) = 0;
 
 BEGIN
    DBMS_OUTPUT.PUT_LINE('Iniciando carga de las fotos de las fachadas...');
 
-   FOR carga IN ubicacion_fachada
+   FOR carga IN camion_foto
    LOOP
       -- 1. Generar un número aleatorio entre 1 y 2
       v_img_id := trunc(dbms_random.value(1,3));
-      v_foto := 'fachada_'|| v_img_id|| '.jpg';
+      v_foto := 'camion_'|| v_img_id|| '.jpg';
 
       -- Bloque interno para manejar excepciones
     BEGIN
         
-        SELECT fachada
+        SELECT foto
         INTO v_blob
-        FROM ubicacion
-        WHERE ubicacion_id = carga.ubicacion_id
+        FROM camion
+        WHERE camion_id = carga.camion_id
         FOR UPDATE;
         
         -- 3. Obtener referencia al archivo en el S.O.
@@ -64,6 +64,6 @@ BEGIN
     END;
   END LOOP;
   DBMS_OUTPUT.PUT_LINE('Proceso de asignación finalizado.');
-end carga_img_fachada;
+end carga_img_camion;
 /
 SHOW ERRORS

@@ -1,6 +1,9 @@
-
+--@Autor:  Zurita Cámara Juan Pablo y Hernández Ruiz Esparza Guillermo
+--@Fecha:  12/12/2025
+--@Descripción: Configuracion de RMAN sin tomar en cuenta la FRA
 
 connect target 'c##backup_modulos_virtualAgricola/1234 as sysbackup'
+
 
 run{
 

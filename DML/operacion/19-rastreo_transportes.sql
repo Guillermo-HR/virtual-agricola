@@ -2,9 +2,10 @@
 --@Fecha:  10/12/2025
 --@Descripción: PROCEDIMIENTO para poblar la TABLA "RASTREO_TRANSPORTE" (pdb:operación)
 
+
 whenever sqlerror exit rollback
 
-Prompt ++Iniciando creacion de procedimiento insertar_rastreo_transporte
+Prompt - Iniciando creacion de procedimiento insertar_rastreo_transporte
 
 CREATE OR REPLACE PROCEDURE INSERTAR_RASTREO_TRANSPORTE (
     p_dia IN DATE
@@ -45,6 +46,8 @@ AS
             o.estatus_operacion_id = 2 AND
             rt.operacion_id IS NULL;
 BEGIN
+    INSERTAR_VENTA_EXTRACCION(p_dia);
+
     DBMS_OUTPUT.PUT_LINE('- Iniciando insercion de registros en tabla rastreo_transporte');
     FOR r_operacion IN c_operaciones_pendientes
     LOOP
@@ -114,6 +117,8 @@ BEGIN
                     dbms_output.put_line('* Error al insertar rastreo_transporte para operacion_id ' || v_operacion_id || ': ' || SQLERRM);
             END;
 
+        INSERTAR_COMPRA_DESCARGA(v_operacion_id);
+
         BEGIN
             UPDATE operacion
             SET estatus_operacion_id = 5, fecha_status = v_fecha_hora_actual
@@ -135,5 +140,6 @@ EXCEPTION
         RAISE;
 END;
 /
+show errors;
 
-Prompt ->Creacion de procedimiento insertar_rastreo_transporte completada
+Prompt > Creacion de procedimiento insertar_rastreo_transporte completada

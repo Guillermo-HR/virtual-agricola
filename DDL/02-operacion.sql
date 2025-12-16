@@ -70,7 +70,7 @@ create table empleado (
     nombre           varchar2(120) not null,
     curp             varchar2(18) not null,
     es_conductor     boolean not null,
-    licencia         blob not null,
+    licencia         blob,
     activo           boolean not null,
     puesto_id        not null,
     constraint empleado_pk primary key (empleado_id) USING INDEX TABLESPACE operacion_c0_index_ts,
@@ -182,8 +182,6 @@ create table bodega (
     centro_resguardo_id not null,
     constraint bodega_pk primary key (bodega_id) USING INDEX TABLESPACE operacion_c0_index_ts,
     constraint bodega_numero_uk unique (numero_bodega, centro_resguardo_id) USING INDEX TABLESPACE operacion_c0_index_ts,
-    constraint bodega_capacidad_maxima_chk check (capacidad_maxima > 0),
-    constraint bodega_espacio_usado_chk check (espacio_usado >= 0 and espacio_usado <= capacidad_maxima),
     constraint bodega_centro_resguardo_id_fk foreign key (centro_resguardo_id) references centro_resguardo(centro_resguardo_id)
 )
 segment creation immediate
@@ -210,7 +208,7 @@ create table camion (
     camion_id      number(4, 0) generated always as identity maxvalue 9999 not null,
     placa          varchar2(7) not null,
     anio           varchar2(4) not null,
-    foto           blob not null,
+    foto           blob,
     activo         boolean not null,
     modelo_id      not null,
     constraint camion_pk primary key (camion_id) USING INDEX TABLESPACE operacion_c0_index_ts,

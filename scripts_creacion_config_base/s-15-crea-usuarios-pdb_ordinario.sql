@@ -3,8 +3,14 @@
 --@Descripción: Creación de usuarios que trabajan con la base de datos
 
 
+
 connect c##sys_modulos_virtualAgricola/1234 as sysdba; 
+
+Prompt ===================================================
+Prompt ++Creacion de usuario app para los módulos 
+
 whenever sqlerror exit rollback
+set feedback off
 
 alter session set CONTAINER=cliente; 
 
@@ -73,8 +79,8 @@ END;
 /
 
     
-
-
+Prompt -> Usuarios Completados
+Prompt =================================================== 
 
 
 

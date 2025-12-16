@@ -47,9 +47,9 @@ Prompt =========================================================
 @DML/operacion/16-cuentas_op.sql
 @DML/operacion/17-pago_ventas.sql
 @DML/operacion/18-evidencias_operacion.sql
-@DML/operacion/19-rastreo_transportes.sql
 @DML/operacion/20-ventas_extraccion.sql
 @DML/operacion/21-compras_descarga.sql
+@DML/operacion/19-rastreo_transportes.sql
 
 Prompt =========================================================
 Prompt Creacion de procedimientos modulo operacion completada

@@ -1,0 +1,16 @@
+--@Autor:  Zurita Cámara Juan Pablo y Hernández Ruiz Esparza Guillermo
+--@Fecha:  12/12/2025
+--@Descripción: Configuración de RMAN tomando en cuenta la FRA
+
+
+connect target 'c##backup_modulos_virtualAgricola/1234 as sysbackup'
+
+delete obsolete;
+
+configure controlfile autobackup format for device type disk clear;
+
+configure channel device type disk clear;
+
+configure controlfile autobackup on; 
+
+configure retention policy to redundancy 1; 

@@ -1,6 +1,0 @@
-
-connect target 'c##backup_modulos_virtualAgricola/1234 as sysbackup'
-
-delete obsolete;
-configure controlfile autobackup format for device type disk clear;
-configure channel device type disk clear;
