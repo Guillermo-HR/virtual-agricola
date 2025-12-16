@@ -1,10 +1,10 @@
---@Autor: 
---@Fecha creación: 
---@Descripción:
+--@Autor:  Zurita Cámara Juan Pablo y Hernández Ruiz Esparza Guillermo
+--@Fecha:  08/12/2025
+--@Descripción: TABLA "EMPRESAS" (cliente: pdb)
 
 whenever sqlerror exit rollback
 
-Prompt - Iniciando creacion de procedimiento insertar_empresas
+Prompt ++Iniciando creacion de procedimiento insertar_empresas
 
 CREATE OR REPLACE PROCEDURE INSERTAR_EMPRESAS
 AS
@@ -13,6 +13,7 @@ AS
     v_nombre             empresa.nombre%TYPE;
     v_empresas_faltantes NUMBER;
 
+    -- 100 nombres de empresas
     TYPE t_nombres IS TABLE OF empresa.nombre%TYPE;
     v_nombres t_nombres := t_nombres(
         'Agroindustrias Unidas de México', 'Productos Agrícolas del Valle',
@@ -27,7 +28,44 @@ AS
         'Productos Orgánicos del Bajío', 'Distribuciones Rurales Avanzadas',
         'Agroindustria y Tecnología Sostenible', 'Comercializadora de Alimentos del Campo',
         'Exportadora de Frutas Tropicales', 'Servicios Agrícolas Profesionales',
-        'Innovación en Producción Agrícola S.A. de C.V.', 'Agroexportaciones del Caribe'
+        'Innovación en Producción Agrícola S.A. de C.V.', 'Agroexportaciones del Caribe',
+        'Tierra Viva Productos', 'Cereales y Granos del Sur',
+        'Fertilizantes Orgánicos del Centro', 'Ganadería Sostenible del Norte',
+        'Aceites Comestibles y Derivados', 'Avicultura Especializada México',
+        'Empacadora de Vegetales Frescos', 'Fibras Naturales del Desierto',
+        'Distribuidora de Miel y Derivados', 'Tecnología Post-Cosecha Global',
+        'Asociación de Productores de Café', 'Comercializadora de Pescados y Mariscos',
+        'Sistema Integral de Invernaderos', 'Frutas Deshidratadas del Pacífico',
+        'Servicios de Maquinaria Agrícola Pesada', 'Cultivos Protegidos de México',
+        'Harinas y Derivados de Trigo', 'Almacenamiento en Silos y Bodegas',
+        'Agropecuaria El Porvenir', 'Exportadora de Flores y Ornamentales',
+        'Comercializadora de Cacao Fino', 'Productora de Lácteos Artesanales',
+        'Distribuidora de Leguminosas', 'Consultoría en Manejo de Cuencas',
+        'BioFertilizantes del Altiplano', 'Mercado Agropecuario Nacional',
+        'Semillas de Alto Rendimiento S.A.', 'Centro de Abasto y Logística Frio',
+        'Cooperativa Agro-Tecnológica', 'Grupo Productor Ganadero',
+        'Acopio y Distribución de Legumbres', 'La Huerta Mexicana de Exportación',
+        'Insumos para el Campo Sostenible', 'Servicios de Riego Inteligente',
+        'Almacenes Centrales del Agro', 'Exportadora de Maíz y Frijol',
+        'Distribuidora Fitosanitaria', 'Tecnología en Empacado de Frutas',
+        'La Granja Ecológica del Sur', 'Consultoría en Certificación Orgánica',
+        'Agroquímicos de Calidad', 'El Molino de la Sierra',
+        'Tierra Fértil Servicios', 'Distribuidora de Alimentos Secos',
+        'Hidroponía Avanzada México', 'Viveros y Jardines del Desierto',
+        'Procesadora de Alimentos Balanceados', 'Red Nacional de Productores',
+        'Servicios de Topografía Agrícola', 'La Cosecha del Mañana',
+        'Fuerza Comercial Agropecuaria', 'Logística de Productos Perecederos',
+        'Empacadora de Carnes del Norte', 'Asesoría en Crédito Rural',
+        'Invernaderos de Alta Tecnología', 'Alimentos Funcionales y Saludables',
+        'Distribuidora de Equipos Agrícolas', 'Sistemas de Automatización Rural',
+        'Productos Lácteos Puros', 'Comercio Justo y Solidario',
+        'Servicios de Control de Plagas', 'Venta de Semillas y Plantas',
+        'Exportaciones Marítimas Agro', 'Corporativo de Empacadoras',
+        'Agencia de Seguros para el Campo', 'Financiera Rural Próspera',
+        'Desarrollo de Biocombustibles', 'Comercializadora de Café Gourmet',
+        'Distribuidora Avícola Mayorista', 'Productos de la Pesca Artesanal',
+        'Tecnología de Suelos y Agua', 'Asesoría Legal Agraria',
+        'Planta Procesadora de Alimentos', 'Red de Proveedores Rurales'
     );
 
     FUNCTION GENERAR_RFC RETURN empresa.rfc%TYPE
@@ -78,4 +116,4 @@ EXCEPTION
 END;
 /
 
-Prompt > Creacion de procedimiento insertar_empresas completada
+Prompt -> Creacion de procedimiento insertar_empresas completada

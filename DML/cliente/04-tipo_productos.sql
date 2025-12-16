@@ -1,11 +1,11 @@
---@Autor: 
---@Fecha creación: 
---@Descripción:
+--@Autor:  Zurita Cámara Juan Pablo y Hernández Ruiz Esparza Guillermo
+--@Fecha:  08/12/2025
+--@Descripción: Inserción de datos para la TABLA "TIPO_PRODUCTO" (pdb: cliente)
 
 whenever sqlerror exit rollback
 set feedback off
 
-Prompt - Iniciando insercion de registros en la tabla tipo producto
+Prompt ++Iniciando insercion de registros en la tabla tipo producto
 
 INSERT INTO tipo_producto (clave, nombre, descripcion, foto, activo) 
     VALUES ('maz_b', 'Maíz Blanco', 'Grano básico utilizado para tortillas, harinas y forraje.', empty_blob(), True);
@@ -110,4 +110,4 @@ INSERT INTO tipo_producto (clave, nombre, descripcion, foto, activo)
 
 COMMIT;
 
-Prompt > Insercion de registros en la tabla tipo producto completada
+Prompt -> Insercion de registros en la tabla tipo producto completada

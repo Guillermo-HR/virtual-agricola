@@ -1,10 +1,10 @@
---@Autor: 
---@Fecha creación: 
---@Descripción:
+--@Autor:  Zurita Cámara Juan Pablo y Hernández Ruiz Esparza Guillermo
+--@Fecha:  07/12/2025
+--@Descripción: TRIGGER para poblar TABLA "SUELDOS" (pdb: operación)
 
 whenever sqlerror exit rollback
 
-Prompt - Iniciando creacion de trigger para sueldo en tabla puesto
+Prompt ++Iniciando creacion de trigger para sueldo en tabla puesto
 
 CREATE OR REPLACE TRIGGER TRG_SUELDO_PUESTO
 AFTER UPDATE OF sueldo ON puesto
@@ -30,4 +30,4 @@ EXCEPTION
 END TRG_SUELDO_PUESTO;
 /
 
-Prompt > Creacion de trigger para sueldo en tabla puesto completada
+Prompt -> Creacion de trigger para sueldo en tabla puesto completada

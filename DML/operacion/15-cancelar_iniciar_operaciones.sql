@@ -1,6 +1,6 @@
---@Autor: 
---@Fecha creación: 
---@Descripción:
+--@Autor:  Zurita Cámara Juan Pablo y Hernández Ruiz Esparza Guillermo
+--@Fecha:  07/12/2025
+--@Descripción: 
 
 whenever sqlerror exit rollback
 

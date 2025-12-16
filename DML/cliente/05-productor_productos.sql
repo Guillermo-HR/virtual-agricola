@@ -1,10 +1,10 @@
---@Autor: 
---@Fecha creación: 
---@Descripción:
+--@Autor:  Zurita Cámara Juan Pablo y Hernández Ruiz Esparza Guillermo
+--@Fecha:  08/12/2025
+--@Descripción: Procedimiento para la TABLA "PRODUCTOR_PRODUCTO" (pdb: cliente)
 
 whenever sqlerror exit rollback
 
-Prompt - Iniciando creacion de procedimiento insertar_productor_productos
+Prompt ++Iniciando creacion de procedimiento insertar_productor_productos
 
 CREATE OR REPLACE PROCEDURE INSERTAR_PRODUCTOR_PRODUCTOS
 AS
@@ -80,4 +80,4 @@ EXCEPTION
 END;
 /
 
-Prompt > Creacion de procedimiento insertar_productor_productos completada
+Prompt -> Creacion de procedimiento insertar_productor_productos completada

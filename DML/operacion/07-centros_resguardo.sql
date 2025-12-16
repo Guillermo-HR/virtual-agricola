@@ -1,10 +1,10 @@
---@Autor: 
---@Fecha creación: 
---@Descripción:
+--@Autor:  Zurita Cámara Juan Pablo y Hernández Ruiz Esparza Guillermo
+--@Fecha:  07/12/2025
+--@Descripción: Procedimiento para poblar la TABLA "CENTR0_RESGUARDO" (pdb:operación)
 
 whenever sqlerror exit rollback
 
-Prompt - Iniciando creacion de procedimiento insertar_centro_resguardo
+Prompt ++Iniciando creacion de procedimiento insertar_centro_resguardo
 
 CREATE OR REPLACE PROCEDURE INSERTAR_CENTRO_RESGUARDO
 AS
@@ -64,4 +64,4 @@ EXCEPTION
 END;
 /
 
-Prompt > Creacion de procedimiento insertar_centro_resguardo completada
+Prompt -> Creacion de procedimiento insertar_centro_resguardo completada

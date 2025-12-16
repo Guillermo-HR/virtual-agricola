@@ -22,7 +22,7 @@ exec dbms_connection_pool.alter_param('','INACTIVITY_TIMEOUT','1800');
 exec dbms_connection_pool.alter_param('','MAX_THINK_TIME','1800');
 
 
-Prompt > Diferentes modos de conexions habilitados
+Prompt -> Diferentes modos de conexions habilitados
 
 exit
 

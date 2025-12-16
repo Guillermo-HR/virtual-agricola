@@ -4,7 +4,7 @@
 
 whenever sqlerror exit rollback
 
-Prompt - Iniciando creacion de procedimiento llenar_modulo_cliente
+Prompt ++Iniciando creacion de procedimiento llenar_modulo_cliente
 
 CREATE OR REPLACE PROCEDURE LLENAR_MODULO_CLIENTE (
     p_n_productores IN NUMBER,
@@ -28,4 +28,4 @@ EXCEPTION
 END LLENAR_MODULO_CLIENTE;
 /
 
-Prompt > Creacion de procedimiento llenar_modulo_cliente completada
+Prompt -> Creacion de procedimiento llenar_modulo_cliente completada

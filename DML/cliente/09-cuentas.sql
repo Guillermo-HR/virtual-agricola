@@ -1,10 +1,10 @@
---@Autor: 
---@Fecha creación: 
---@Descripción:
+--@Autor:  Zurita Cámara Juan Pablo y Hernández Ruiz Esparza Guillermo
+--@Fecha:  08/12/2025
+--@Descripción: Procedimiento para poblar la tabla TABLA "ZONA" (pdb: cliente)
 
 whenever sqlerror exit rollback
 
-Prompt - Iniciando creacion de procedimiento insertar_cuentas
+Prompt ++Iniciando creacion de procedimiento insertar_cuentas
 
 CREATE OR REPLACE PROCEDURE INSERTAR_CUENTAS
 AS
@@ -101,4 +101,4 @@ EXCEPTION
 END INSERTAR_CUENTAS;
 /
 
-Prompt > Creacion de procedimiento insertar_cuentas completada
+Prompt -> Creacion de procedimiento insertar_cuentas completada

@@ -1,10 +1,10 @@
---@Autor: 
---@Fecha creación: 
---@Descripción:
+--@Autor:  Zurita Cámara Juan Pablo y Hernández Ruiz Esparza Guillermo
+--@Fecha:  07/12/2025
+--@Descripción: Procedimiento para la TABLA "UBICACION" (pdb:operación)
 
 whenever sqlerror exit rollback
 
-Prompt - Iniciando creacion de procedimiento insertar_ubicaciones
+Prompt ++Iniciando creacion de procedimiento insertar_ubicaciones
 
 CREATE OR REPLACE PROCEDURE INSERTAR_UBICACIONES (
     p_n_centro_resguardo IN NUMBER,
@@ -121,4 +121,4 @@ EXCEPTION
 END;
 /
 
-Prompt > Creacion de procedimiento insertar_ubicaciones completada
+Prompt -> Creacion de procedimiento insertar_ubicaciones completada

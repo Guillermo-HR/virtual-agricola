@@ -1,7 +1,8 @@
 SET SERVEROUTPUT ON SIZE UNLIMITED
--- llenado previo
-connect admin_cliente/1234@cliente
 
+
+-- LLENADO PREVIO
+connect admin_cliente/1234@cliente
 EXEC LLENAR_MODULO_CLIENTE(50, 50, 30) 
 
 -- productores, compradores, productores-compradores
@@ -12,6 +13,13 @@ EXEC INSERTAR_UBICACIONES(70, 130)
 EXEC INSERTAR_CENTRO_RESGUARDO
 EXEC INSERTAR_BODEGAS
 EXEC INSERTAR_CAMIONES(70)
+
+--
+INSERT INTO tipo_producto_op(tipo_producto_id,nombre,activo) values(1,'prueba',true);
+
+INSERT INTO cuenta_op(cuenta_id,clabe,titular,banco,activo) values(1,'qwertyuiopasdfghjk','prueba','bancoPrueba',true);
+commit; 
+--
 
 EXEC INSERTAR_OPERACIONES(100, 0, to_date('1-12-2025', 'DD-MM-YYYY')) 
 -- compras, ventas
@@ -37,7 +45,7 @@ EXEC INSERTAR_EVIDENCIAS_OPERACION
 EXEC INSERTAR_VENTA_EXTRACCION(to_date('8-12-2025 7:00', 'DD-MM-YYYY HH24:MI'))
 EXEC INSERTAR_RASTREO_TRANSPORTE(to_date('8-12-2025', 'DD-MM-YYYY'))
 
-connect admin_cliente/1234@cliente 
+connect admin_cliente/1234@cliente
 
 EXEC LLENAR_MODULO_CLIENTE(2, 5, 1)
 
@@ -59,7 +67,7 @@ EXEC INSERTAR_VENTA_EXTRACCION(to_date('10-12-2025 7:00', 'DD-MM-YYYY HH24:MI'))
 EXEC INSERTAR_RASTREO_TRANSPORTE(to_date('10-12-2025', 'DD-MM-YYYY'))
 EXEC INSERTAR_COMPRA_DESCARGA
 
-connect admin_app/1234@cliente
+connect admin_cliente/1234@cliente
 
 EXEC LLENAR_MODULO_CLIENTE(0, 20, 0)
 
@@ -76,11 +84,11 @@ EXEC INSERTAR_COMPRA_DESCARGA
 EXEC INSERTAR_OPERACIONES(30, 0, to_date('11-12-2025', 'DD-MM-YYYY'))
 EXEC CANCELAR_INICIAR_OPERACIONES(to_date('11-12-2025', 'DD-MM-YYYY'))
 -- Dia 12-12-2025 (viernes)
-connect admin_app/1234@cliente
+connect admin_cliente/1234@cliente
 
 EXEC LLENAR_MODULO_CLIENTE(15, 20, 7)
 
-connect admin_operacion/1234@opearcion
+connect admin_operacion/1234@operacion
 
 EXEC INSERTAR_UBICACIONES(0, 42)
 EXEC INSERTAR_EVIDENCIAS_OPERACION

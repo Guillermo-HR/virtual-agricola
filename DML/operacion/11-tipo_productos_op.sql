@@ -1,10 +1,11 @@
---@Autor: 
---@Fecha creación: 
---@Descripción:
+--@Autor:  Zurita Cámara Juan Pablo y Hernández Ruiz Esparza Guillermo
+--@Fecha:  10/12/2025
+--@Descripción: Procedimiento para sincronizar la TABLA "TIPO_PRODUCTO_OP" en 
+-- en la pdb "OPERACION" con su real "TIPO_PRODUCOT" en la pdb "CLIENTE"
 
 whenever sqlerror exit rollback
 
-Prompt - Iniciando creacion de procedimiento sinc_tipo_producto_op
+Prompt ++Iniciando creacion de procedimiento sinc_tipo_producto_op
 
 CREATE OR REPLACE PROCEDURE SINC_TIPO_PRODUCTO_OP
 AS
@@ -20,4 +21,4 @@ EXCEPTION
 END;
 /
 
-Prompt > Creacion de procedimiento sinc_tipo_producto_op completada
+Prompt -> Creacion de procedimiento sinc_tipo_producto_op completada

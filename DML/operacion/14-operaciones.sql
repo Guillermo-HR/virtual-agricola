@@ -1,10 +1,10 @@
---@Autor: 
---@Fecha creación: 
---@Descripción:
+--@Autor:  Zurita Cámara Juan Pablo y Hernández Ruiz Esparza Guillermo
+--@Fecha:  07/12/2025
+--@Descripción: PROCEDIMIENTO para poblar la TABLA "OPERACION" (pdb:operación)
 
 whenever sqlerror exit rollback
 
-Prompt - Iniciando creacion de procedimiento insertar_operaciones
+Prompt ++Iniciando creacion de procedimiento insertar_operaciones
 
 CREATE OR REPLACE PROCEDURE INSERTAR_OPERACIONES (
     p_n_compras IN NUMBER,
@@ -89,7 +89,7 @@ BEGIN
             SELECT ROUND(espacio_usado*0.4, 3)
             INTO v_cantidad_maxima
             FROM centro_resguardo 
-            WHERE ubicacion_id = v_destino_id;
+            WHERE ubicacion_id = v_origen_id;
         END IF;
 
         v_cantidad_minima := ROUND(v_cantidad_maxima * 0.3, 3);
@@ -148,4 +148,4 @@ EXCEPTION
 END;
 /
 
-Prompt > Creacion de procedimiento insertar_operaciones completada
+Prompt -> Creacion de procedimiento insertar_operaciones completada

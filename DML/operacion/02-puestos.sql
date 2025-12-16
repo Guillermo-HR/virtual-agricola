@@ -1,10 +1,10 @@
---@Autor: 
---@Fecha creación: 
---@Descripción:
+--@Autor:  Zurita Cámara Juan Pablo y Hernández Ruiz Esparza Guillermo
+--@Fecha:  07/12/2025
+--@Descripción: Inserción de datos para la TABLA "PUESTO" (pdb:operación)
 
 whenever sqlerror exit rollback
 
-Prompt - Iniciando insercion de registros en la tabla puesto
+Prompt ++Iniciando insercion de registros en la tabla puesto
 
 INSERT INTO puesto(clave, descripcion, sueldo, inicio_sueldo, fin_sueldo)
     VALUES ('00DIR', 'Director General', 85500.00, TO_DATE('01-01-2020', 'DD-MM-YYYY'), null);
@@ -59,6 +59,66 @@ INSERT INTO puesto(clave, descripcion, sueldo, inicio_sueldo, fin_sueldo)
 INSERT INTO puesto(clave, descripcion, sueldo, inicio_sueldo, fin_sueldo)
     VALUES ('GRNCR', 'Gerente de Centro de resguardo', 47200.33, TO_DATE('30-03-2020', 'DD-MM-YYYY'), null);
 
+-- Puestos de Dirección/Gerencia (Nivel Alto)
+INSERT INTO puesto(clave, descripcion, sueldo, inicio_sueldo, fin_sueldo)
+    VALUES ('0DMAR', 'Director de Marketing', 75000.00, TO_DATE('01-08-2020', 'DD-MM-YYYY'), null);
+INSERT INTO puesto(clave, descripcion, sueldo, inicio_sueldo, fin_sueldo)
+    VALUES ('0DLOG', 'Director de Logística y Cadena', 78000.00, TO_DATE('10-01-2021', 'DD-MM-YYYY'), null);
+INSERT INTO puesto(clave, descripcion, sueldo, inicio_sueldo, fin_sueldo)
+    VALUES ('0GFIN', 'Gerente de Finanzas', 68500.20, TO_DATE('01-07-2022', 'DD-MM-YYYY'), null);
+INSERT INTO puesto(clave, descripcion, sueldo, inicio_sueldo, fin_sueldo)
+    VALUES ('0GTIC', 'Gerente de TI', 65000.50, TO_DATE('15-04-2021', 'DD-MM-YYYY'), null);
+INSERT INTO puesto(clave, descripcion, sueldo, inicio_sueldo, fin_sueldo)
+    VALUES ('0DHUM', 'Director de Recursos Humanos', 72000.90, TO_DATE('20-09-2020', 'DD-MM-YYYY'), null);
+
+-- Puestos de Jefatura/Coordinación (Nivel Medio)
+INSERT INTO puesto(clave, descripcion, sueldo, inicio_sueldo, fin_sueldo)
+    VALUES ('JPREN', 'Jefe de Prensa y Comunicación', 42000.00, TO_DATE('01-03-2023', 'DD-MM-YYYY'), null);
+INSERT INTO puesto(clave, descripcion, sueldo, inicio_sueldo, fin_sueldo)
+    VALUES ('CSTOC', 'Coordinador de Stock e Inventario', 34500.75, TO_DATE('10-06-2022', 'DD-MM-YYYY'), null);
+INSERT INTO puesto(clave, descripcion, sueldo, inicio_sueldo, fin_sueldo)
+    VALUES ('JSEGU', 'Jefe de Seguridad e Higiene', 39000.10, TO_DATE('25-11-2021', 'DD-MM-YYYY'), null);
+INSERT INTO puesto(clave, descripcion, sueldo, inicio_sueldo, fin_sueldo)
+    VALUES ('CANAL', 'Coordinador de Canales Digitales', 36000.40, TO_DATE('05-01-2023', 'DD-MM-YYYY'), null);
+INSERT INTO puesto(clave, descripcion, sueldo, inicio_sueldo, fin_sueldo)
+    VALUES ('JVENT', 'Jefe de Ventas Regional', 48500.60, TO_DATE('12-10-2020', 'DD-MM-YYYY'), null);
+INSERT INTO puesto(clave, descripcion, sueldo, inicio_sueldo, fin_sueldo)
+    VALUES ('CJURD', 'Coordinador Jurídico', 55000.00, TO_DATE('18-05-2021', 'DD-MM-YYYY'), null);
+INSERT INTO puesto(clave, descripcion, sueldo, inicio_sueldo, fin_sueldo)
+    VALUES ('JNGR', 'Jefe de Negocios Rurales', 41000.80, TO_DATE('03-02-2022', 'DD-MM-YYYY'), null);
+
+-- Puestos Técnicos y Especialistas (Nivel Operativo/Especializado)
+INSERT INTO puesto(clave, descripcion, sueldo, inicio_sueldo, fin_sueldo)
+    VALUES ('ANFIN', 'Analista Financiero', 32000.95, TO_DATE('01-04-2022', 'DD-MM-YYYY'), null);
+INSERT INTO puesto(clave, descripcion, sueldo, inicio_sueldo, fin_sueldo)
+    VALUES ('DESAR', 'Desarrollador de Software Jr.', 30500.30, TO_DATE('20-09-2023', 'DD-MM-YYYY'), null);
+INSERT INTO puesto(clave, descripcion, sueldo, inicio_sueldo, fin_sueldo)
+    VALUES ('SOPOR', 'Técnico de Soporte TI', 25000.15, TO_DATE('11-11-2022', 'DD-MM-YYYY'), null);
+INSERT INTO puesto(clave, descripcion, sueldo, inicio_sueldo, fin_sueldo)
+    VALUES ('DGRAF', 'Diseñador Gráfico', 26500.00, TO_DATE('07-03-2023', 'DD-MM-YYYY'), null);
+INSERT INTO puesto(clave, descripcion, sueldo, inicio_sueldo, fin_sueldo)
+    VALUES ('EPRED', 'Especialista en Pre-cosecha', 38000.50, TO_DATE('14-06-2021', 'DD-MM-YYYY'), null);
+INSERT INTO puesto(clave, descripcion, sueldo, inicio_sueldo, fin_sueldo)
+    VALUES ('EPOST', 'Especialista Post-cosecha', 39500.10, TO_DATE('29-01-2022', 'DD-MM-YYYY'), null);
+INSERT INTO puesto(clave, descripcion, sueldo, inicio_sueldo, fin_sueldo)
+    VALUES ('ANAOP', 'Analista de Operaciones', 31000.70, TO_DATE('03-08-2020', 'DD-MM-YYYY'), TO_DATE('31-05-2024', 'DD-MM-YYYY'));
+INSERT INTO puesto(clave, descripcion, sueldo, inicio_sueldo, fin_sueldo)
+    VALUES ('ASRHS', 'Asistente de Recursos Humanos', 18500.20, TO_DATE('01-12-2021', 'DD-MM-YYYY'), null);
+INSERT INTO puesto(clave, descripcion, sueldo, inicio_sueldo, fin_sueldo)
+    VALUES ('TMANA', 'Técnico de Mantenimiento Avanzado', 22000.45, TO_DATE('25-05-2020', 'DD-MM-YYYY'), null);
+INSERT INTO puesto(clave, descripcion, sueldo, inicio_sueldo, fin_sueldo)
+    VALUES ('INAGR', 'Investigador Agrícola', 45000.99, TO_DATE('17-02-2022', 'DD-MM-YYYY'), null);
+INSERT INTO puesto(clave, descripcion, sueldo, inicio_sueldo, fin_sueldo)
+    VALUES ('VENSU', 'Vendedor de Sucursal', 20500.60, TO_DATE('04-04-2023', 'DD-MM-YYYY'), null);
+INSERT INTO puesto(clave, descripcion, sueldo, inicio_sueldo, fin_sueldo)
+    VALUES ('ASECO', 'Asesor Comercial Junior', 23000.80, TO_DATE('19-07-2022', 'DD-MM-YYYY'), null);
+INSERT INTO puesto(clave, descripcion, sueldo, inicio_sueldo, fin_sueldo)
+    VALUES ('MOPLA', 'Manejo de Operaciones de Planta', 27500.35, TO_DATE('13-09-2021', 'DD-MM-YYYY'), null);
+INSERT INTO puesto(clave, descripcion, sueldo, inicio_sueldo, fin_sueldo)
+    VALUES ('LOGAY', 'Ayudante de Logística', 14000.00, TO_DATE('02-10-2023', 'DD-MM-YYYY'), null);
+INSERT INTO puesto(clave, descripcion, sueldo, inicio_sueldo, fin_sueldo)
+    VALUES ('LIDER', 'Líder de Proyecto', 53000.10, TO_DATE('13-03-2020', 'DD-MM-YYYY'), null);
+
 COMMIT;
 
-Prompt > Insercion de registros en la tabla puesto completada
+Prompt -> Insercion de registros en la tabla puesto completada

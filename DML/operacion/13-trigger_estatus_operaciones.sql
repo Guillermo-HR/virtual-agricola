@@ -1,10 +1,10 @@
---@Autor: 
---@Fecha creación: 
---@Descripción:
+--@Autor:  Zurita Cámara Juan Pablo y Hernández Ruiz Esparza Guillermo
+--@Fecha:  07/12/2025
+--@Descripción: TRIGGER para poblar la TABLA "HISTORICO_ESTATUS_OPERACION"
 
 whenever sqlerror exit rollback
 
-Prompt - Iniciando creacion de trigger para estatus_operacion en tabla operacion
+Prompt ++Iniciando creacion de trigger para estatus_operacion en tabla operacion
 
 CREATE OR REPLACE TRIGGER TRG_ESTATUS_OPERACION
 AFTER INSERT OR UPDATE OF estatus_operacion_id ON operacion
@@ -29,4 +29,4 @@ EXCEPTION
 END TRG_ESTATUS_OPERACION;
 /
 
-Prompt > Creacion de trigger para estatus_operacion en tabla operacion completada
+Prompt -> Creacion de trigger para estatus_operacion en tabla operacion completada

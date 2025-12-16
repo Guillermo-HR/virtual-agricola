@@ -1,10 +1,10 @@
---@Autor: 
---@Fecha creación: 
---@Descripción:
+--@Autor:  Zurita Cámara Juan Pablo y Hernández Ruiz Esparza Guillermo
+--@Fecha:  07/12/2025
+--@Descripción: Procedimiento para poblar la TABLA "PUESTO" (pdb:operación)
 
 whenever sqlerror exit rollback
 
-Prompt - Iniciando creacion de procedimiento insertar_empleados
+Prompt ++Iniciando creacion de procedimiento insertar_empleados
 
 CREATE OR REPLACE PROCEDURE INSERTAR_EMPLEADOS (
     p_n_empleados IN NUMBER,
@@ -27,7 +27,11 @@ AS
         'Alejandro', 'Valentina', 'Santiago', 'Camila', 'Emilio',
         'Regina', 'Mateo', 'Ximena', 'Nicolás', 'Sofía',
         'Daniel', 'Luciana', 'Javier', 'Valeria', 'Sebastián',
-        'Renata', 'Andrés', 'Mariana', 'Ricardo', 'Victoria'
+        'Renata', 'Andrés', 'Mariana', 'Ricardo', 'Victoria',
+        'Gabriel', 'Isabella', 'Martín', 'Elena', 'Diego',
+        'Abril', 'Bruno', 'Paula', 'Leonardo', 'Zoe',
+        'Hugo', 'Alma', 'Adrián', 'Sara', 'Manuel',
+        'Julia', 'Raúl', 'Blanca', 'Iván', 'Claudia'
     );
 
     TYPE t_apellidos IS TABLE OF VARCHAR2(40);
@@ -37,7 +41,16 @@ AS
         'Rivera', 'Gómez', 'Díaz', 'Reyes', 'Cruz',
         'Morales', 'Jiménez', 'Ruiz', 'Silva', 'Castro',
         'Ortiz', 'Chávez', 'Guerrero', 'Mendoza', 'Vargas',
-        'Herrera', 'Peña', 'Acosta', 'Núñez', 'Rojas'
+        'Herrera', 'Peña', 'Acosta', 'Núñez', 'Rojas',
+        'Molina', 'Navarro', 'Delgado', 'Vázquez', 'Cabrera',
+        'Miranda', 'Campos', 'Arias', 'Moreno', 'Estrada',
+        'Montes', 'Aguilar', 'Soto', 'Velázquez', 'Pardo',
+        'Salazar', 'Figueroa', 'Romero', 'Vega', 'Fuentes',
+        'Castillo', 'Juárez', 'Báez', 'Cisneros', 'Ochoa',
+        'Paredes', 'León', 'Guzmán', 'Márquez', 'Sosa',
+        'Ibarra', 'Cuevas', 'Zavala', 'Félix', 'Olivares',
+        'Carvajal', 'Macías', 'Pacheco', 'Montoya', 'Cervantes',
+        'Aldana', 'Barrios', 'Cano', 'Corona', 'Esquivel'
     );
 
     FUNCTION GENERAR_CURP RETURN empleado.curp%TYPE IS
@@ -115,4 +128,4 @@ EXCEPTION
 END;
 /
 
-Prompt > Creacion de procedimiento insertar_empleados completada
+Prompt -> Creacion de procedimiento insertar_empleados completada

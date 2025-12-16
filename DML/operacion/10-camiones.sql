@@ -1,10 +1,10 @@
---@Autor: 
---@Fecha creación: 
---@Descripción:
+--@Autor:  Zurita Cámara Juan Pablo y Hernández Ruiz Esparza Guillermo
+--@Fecha:  07/12/2025
+--@Descripción: Procedimiento para poblar la TABLA "CAMION" (pdb:operación)
 
 whenever sqlerror exit rollback
 
-Prompt - Iniciando creacion de procedimiento insertar_camiones
+Prompt ++Iniciando creacion de procedimiento insertar_camiones
 
 CREATE OR REPLACE PROCEDURE INSERTAR_CAMIONES (
     p_n_camiones IN NUMBER
@@ -64,4 +64,4 @@ EXCEPTION
 END;
 /
 
-Prompt > Creacion de procedimiento insertar_camiones completada
+Prompt -> Creacion de procedimiento insertar_camiones completada

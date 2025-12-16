@@ -1,10 +1,10 @@
---@Autor: 
---@Fecha creación: 
---@Descripción:
+--@Autor:  Zurita Cámara Juan Pablo y Hernández Ruiz Esparza Guillermo
+--@Fecha:  07/12/2025
+--@Descripción: Inserción de datos para la TABLA "ENTIDAD" (pdb:operación)
 
 whenever sqlerror exit rollback
 
-Prompt - Iniciando insercion de registros en la tabla entidad
+Prompt ++Iniciando insercion de registros en la tabla entidad
 
 INSERT INTO entidad (clave, nombre) 
     VALUES ('00AGS', 'Aguascalientes');
@@ -71,4 +71,4 @@ INSERT INTO entidad (clave, nombre)
 INSERT INTO entidad (clave, nombre) 
     VALUES ('0CDMX', 'Ciudad de México');
 
-Prompt > Insercion de registros en la tabla entidad completada
+Prompt -> Insercion de registros en la tabla entidad completada

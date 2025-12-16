@@ -1,10 +1,10 @@
---@Autor: 
---@Fecha creación: 
---@Descripción:
+--@Autor:  Zurita Cámara Juan Pablo y Hernández Ruiz Esparza Guillermo
+--@Fecha:  07/12/2025
+--@Descripción: Procedimiento para poblar la TABLA "BODEGAS" (pdb:operación)
 
 whenever sqlerror exit rollback
 
-Prompt - Iniciando creacion de procedimiento insertar_bodegas
+Prompt ++Iniciando creacion de procedimiento insertar_bodegas
 
 CREATE OR REPLACE PROCEDURE INSERTAR_BODEGAS
 AS
@@ -57,4 +57,4 @@ EXCEPTION
 END;
 /
 
-Prompt > Creacion de procedimiento insertar_bodegas completada
+Prompt -> Creacion de procedimiento insertar_bodegas completada

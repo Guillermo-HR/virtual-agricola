@@ -1,10 +1,10 @@
---@Autor: 
---@Fecha creación: 
---@Descripción:
+--@Autor:  Zurita Cámara Juan Pablo y Hernández Ruiz Esparza Guillermo
+--@Fecha:  08/12/2025
+--@Descripción: Procedimiento para poblar la TABLA "SOCIOS" (pdb: cliente)
 
 whenever sqlerror exit rollback
 
-Prompt - Iniciando creacion de procedimiento insertar_socios
+Prompt ++Iniciando creacion de procedimiento insertar_socios
 
 CREATE OR REPLACE PROCEDURE INSERTAR_SOCIOS (
     p_n_productores IN NUMBER,
@@ -27,7 +27,11 @@ AS
         'Alejandro', 'Valentina', 'Santiago', 'Camila', 'Emilio',
         'Regina', 'Mateo', 'Ximena', 'Nicolás', 'Sofía',
         'Daniel', 'Luciana', 'Javier', 'Valeria', 'Sebastián',
-        'Renata', 'Andrés', 'Mariana', 'Ricardo', 'Victoria'
+        'Renata', 'Andrés', 'Mariana', 'Ricardo', 'Victoria',
+        'Gabriel', 'Isabella', 'Martín', 'Elena', 'Diego',
+        'Abril', 'Bruno', 'Paula', 'Leonardo', 'Zoe',
+        'Hugo', 'Alma', 'Adrián', 'Sara', 'Manuel',
+        'Julia', 'Raúl', 'Blanca', 'Iván', 'Claudia'
     );
 
     TYPE t_apellidos IS TABLE OF socio.ap_paterno%TYPE;
@@ -37,8 +41,15 @@ AS
         'Rivera', 'Gómez', 'Díaz', 'Reyes', 'Cruz',
         'Morales', 'Jiménez', 'Ruiz', 'Silva', 'Castro',
         'Ortiz', 'Chávez', 'Guerrero', 'Mendoza', 'Vargas',
-        'Herrera', 'Peña', 'Acosta', 'Núñez', 'Rojas'
+        'Herrera', 'Peña', 'Acosta', 'Núñez', 'Rojas',
+        'Molina', 'Navarro', 'Delgado', 'Vázquez', 'Cabrera',
+        'Miranda', 'Campos', 'Arias', 'Moreno', 'Estrada',
+        'Montes', 'Aguilar', 'Soto', 'Velázquez', 'Pardo',
+        'Salazar', 'Figueroa', 'Romero', 'Vega', 'Fuentes',
+        'Castillo', 'Juárez', 'Báez', 'Cisneros', 'Ochoa',
+        'Paredes', 'León', 'Guzmán', 'Márquez', 'Sosa'
     );
+
     FUNCTION GENERAR_EMAIL(
         p_nombre IN socio.nombre%TYPE,
         p_ap_paterno IN socio.ap_paterno%TYPE
@@ -60,6 +71,7 @@ AS
             RETURN GENERAR_EMAIL(p_nombre, p_ap_paterno);
         END IF;
     END GENERAR_EMAIL;
+
 BEGIN
     DBMS_OUTPUT.PUT_LINE('- Iniciando insercion de registros en tabla socio');
     FOR i IN 1..v_total_registros
@@ -107,4 +119,4 @@ EXCEPTION
 END;
 /
 
-Prompt > Creacion de procedimiento insertar_socios completada
+Prompt ->Creacion de procedimiento insertar_socios completada

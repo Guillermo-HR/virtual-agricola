@@ -1,10 +1,10 @@
---@Autor: 
---@Fecha creación: 
---@Descripción:
+--@Autor:  Zurita Cámara Juan Pablo y Hernández Ruiz Esparza Guillermo
+--@Fecha:  08/12/2025
+--@Descripción: Procedimiento para poblar a TABLA "PRODUCTORES" (pdb: cliente), es necesario primero ejecutar el procedimiento "INSERTAR_SOCIOS"
 
 whenever sqlerror exit rollback
 
-Prompt - Iniciando creacion de procedimiento insertar_productores
+Prompt ++Iniciando creacion de procedimiento insertar_productores
 
 CREATE OR REPLACE PROCEDURE INSERTAR_PRODUCTORES
 AS
@@ -54,6 +54,7 @@ BEGIN
         v_ap_paterno   := r_productor.ap_paterno;
         v_semblanza := v_semblanzas(TRUNC(DBMS_RANDOM.VALUE(1, v_semblanzas.COUNT + 1)));
         v_url := LOWER('https://www.' ||  v_nombre || v_ap_paterno ||'.com.mx');
+
         SELECT zona_id 
         INTO v_zona_id
         FROM zona 
@@ -82,4 +83,4 @@ EXCEPTION
 END;
 /
 
-Prompt > Creacion de procedimiento insertar_productores completada
+Prompt -> Creacion de procedimiento insertar_productores completada

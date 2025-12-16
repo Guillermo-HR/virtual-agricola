@@ -1,10 +1,10 @@
---@Autor: 
---@Fecha creación: 
---@Descripción:
+--@Autor:  Zurita Cámara Juan Pablo y Hernández Ruiz Esparza Guillermo
+--@Fecha:  10/12/2025
+--@Descripción: PROCEDIMIENTO para poblar la TABLA "PAGO_VENTA" (pdb:operación)
 
 whenever sqlerror exit rollback
 
-Prompt - Iniciando creacion de procedimiento insertar_pago_ventas
+Prompt ++Iniciando creacion de procedimiento insertar_pago_ventas
 
 CREATE OR REPLACE PROCEDURE INSERTAR_PAGO_VENTAS
 AS
@@ -63,4 +63,4 @@ EXCEPTION
 END;
 /
 
-Prompt > Creacion de procedimiento insertar_pago_ventas completada
+Prompt -> Creacion de procedimiento insertar_pago_ventas completada

@@ -1,6 +1,6 @@
---@Autor: 
---@Fecha creación: 
---@Descripción:
+--@Autor:  Zurita Cámara Juan Pablo y Hernández Ruiz Esparza Guillermo
+--@Fecha:  06/12/2025
+--@Descripción: DDL para el módulo "OPERACION"
 
 connect admin_operacion/1234@operacion;
 
@@ -70,7 +70,7 @@ create table empleado (
     nombre           varchar2(120) not null,
     curp             varchar2(18) not null,
     es_conductor     boolean not null,
-    licencia         blob,
+    licencia         blob not null,
     activo           boolean not null,
     puesto_id        not null,
     constraint empleado_pk primary key (empleado_id) USING INDEX TABLESPACE operacion_c0_index_ts,
@@ -138,7 +138,7 @@ create table ubicacion (
     municipio_id     not null,
     constraint ubicacion_pk primary key (ubicacion_id) USING INDEX TABLESPACE operacion_c0_index_ts,
     constraint ubicacion_clave_uk unique (clave) USING INDEX TABLESPACE operacion_c0_index_ts,
-    constraint ubicacion_clave_chk check (length(clave)=10),
+    constraint ubicacion_clave_chk check (length(clave)=5),
     constraint ubicacion_codigo_postal_chk check (length(codigo_postal)=5),
     constraint ubicacion_codigo_postal_chk_num check (regexp_like(codigo_postal, '^[0-9]{5}$')),
     constraint ubicacion_latitud_chk check (latitud between -90 and 90),
@@ -210,7 +210,7 @@ create table camion (
     camion_id      number(4, 0) generated always as identity maxvalue 9999 not null,
     placa          varchar2(7) not null,
     anio           varchar2(4) not null,
-    foto           blob,
+    foto           blob not null,
     activo         boolean not null,
     modelo_id      not null,
     constraint camion_pk primary key (camion_id) USING INDEX TABLESPACE operacion_c0_index_ts,
@@ -260,10 +260,10 @@ create table operacion (
     fecha_inicio        date not null,
     fecha_fin           date,
     tipo_operacion      varchar2(1) not null,
-    cantidad            number(6, 3) not null,
-    precio_unitario    number(6, 2) not null,
-    comision            number(7, 2) not null,
-    total              number(10, 2) not null,
+    cantidad            number(10, 3) not null,
+    precio_unitario    number(10, 2) not null,
+    comision            number(10, 2) not null,
+    total              number(11, 2) not null,
     fecha_status       date not null,
     camion_id          not null,
     chofer_id          not null,

@@ -1,6 +1,7 @@
---@Autor: 
---@Fecha creación: 
---@Descripción:
+--@Autor:  Zurita Cámara Juan Pablo y Hernández Ruiz Esparza Guillermo
+--@Fecha:  06/12/2025
+--@Descripción: DDL para los objetos del módulo "CLIENTE"
+
 
 
 connect admin_cliente/1234@cliente

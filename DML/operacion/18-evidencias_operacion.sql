@@ -1,10 +1,10 @@
---@Autor: 
---@Fecha creación: 
---@Descripción:
+--@Autor:  Zurita Cámara Juan Pablo y Hernández Ruiz Esparza Guillermo
+--@Fecha:  10/12/2025
+--@Descripción: PROCEDIMIENTO para poblar la TABLA "EVIDENCIA_OPERACION" (pdb:operación)
 
 whenever sqlerror exit rollback
 
-Prompt - Iniciando creacion de procedimiento insertar_evidencias_operacion
+Prompt ++Iniciando creacion de procedimiento insertar_evidencias_operacion
 
 CREATE OR REPLACE PROCEDURE INSERTAR_EVIDENCIAS_OPERACION
 AS
@@ -53,4 +53,4 @@ EXCEPTION
 END;
 /
 
-Prompt > Creacion de procedimiento insertar_evidencias_operacion completada
+Prompt -> Creacion de procedimiento insertar_evidencias_operacion completada

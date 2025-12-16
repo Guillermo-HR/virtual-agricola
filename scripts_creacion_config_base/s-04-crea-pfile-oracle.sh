@@ -23,3 +23,8 @@ echo "Listo"
 echo "Comprobando la existencia y contenido del PFILE"
 echo ""
 cat ${pfile}
+
+
+
+
+

@@ -1,6 +1,6 @@
---@Autor: 
---@Fecha creación: 
---@Descripción:
+--@Autor:  Zurita Cámara Juan Pablo y Hernández Ruiz Esparza Guillermo
+--@Fecha:  09/12/2025
+--@Descripción: DDL y procedimientos
 
 whenever sqlerror exit rollback
 

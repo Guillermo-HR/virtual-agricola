@@ -1,10 +1,10 @@
---@Autor: 
---@Fecha creación: 
---@Descripción:
+--@Autor:  Zurita Cámara Juan Pablo y Hernández Ruiz Esparza Guillermo
+--@Fecha:  07/12/2025
+--@Descripción: Inserción de datos para la TABLA "MUNICIPIO" (pdb:operación)
 
 whenever sqlerror exit rollback
 
-Prompt - Iniciando insercion de registros en la tabla municipio
+Prompt ++Iniciando insercion de registros en la tabla municipio
 
 INSERT INTO municipio (numero_municipio, nombre, entidad_id)
     VALUES (1, 'Aguascalientes', 1);
@@ -230,4 +230,4 @@ INSERT INTO municipio (numero_municipio, nombre, entidad_id)
 INSERT INTO municipio (numero_municipio, nombre, entidad_id)
     VALUES (3, 'Coyoacán', 32);
 
-Prompt > Insercion de registros en la tabla municipio completada
+Prompt -> Insercion de registros en la tabla municipio completada

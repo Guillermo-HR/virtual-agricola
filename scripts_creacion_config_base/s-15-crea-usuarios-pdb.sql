@@ -16,7 +16,6 @@ grant create session to cliente_app;
 
 alter user cliente_app quota unlimited on users; 
 
-
 DECLARE
     -- No se necesita un cursor explícito ni variables intermedias.
     v_sql_statement VARCHAR2(500); 
