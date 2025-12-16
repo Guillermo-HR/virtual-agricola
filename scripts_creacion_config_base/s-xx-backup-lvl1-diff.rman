@@ -1,13 +1,10 @@
-# @Autor:  Zurita Cámara Juan Pablo y Hernández Ruiz Esparza Guillermo
-# @Fecha:  14/12/2025
-# @Descripción: Backup Incremental Nivel 1 Diferencial (Cada 2 dias)
 
 
 RUN {
 
     BACKUP AS BACKUPSET INCREMENTAL LEVEL 1 DATABASE TAG 'LVL1_DIFF_FRA';
 
-    BACKUP AS BACKUPSET ARCHIVELOG ALL DELETE INPUT TAG 'ARCH_FRA_DIFF';
+    BACKUP ARCHIVELOG ALL DELETE INPUT TAG 'ARCH_FRA_DIFF';
 
     DELETE NOPROMPT OBSOLETE;
 }

@@ -89,7 +89,13 @@ mkdir -p backups/
 chown -R oracle:oistall backups
 chmod -R 750 backups
 
+cd backups
+mkdir -p block-tracking/
+chown -R oracle:oinstall block-tracking 
+chmod -R 750 block-tracking
 
 
 
 
+
+/unam/bda/discos/disk10/backups

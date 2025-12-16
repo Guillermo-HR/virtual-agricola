@@ -24,7 +24,7 @@ alter system set log_archive_dest_2='LOCATION=USE_DB_RECOVERY_FILE_DEST';
 
 alter system set log_archive_format = 'arch_%t_%s_%r.arc' scope=spfile;
 
-alter system set log_archive_min_succeed_dest=1; 
+alter system set log_archive_min_succeed_dest=2; 
 
 --- Denter la instancia e iniciar en modo mount ----
 shutdown immediate

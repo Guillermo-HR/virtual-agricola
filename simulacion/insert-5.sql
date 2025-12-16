@@ -1,33 +1,19 @@
 --@Autor:  Zurita Cámara Juan Pablo y Hernández Ruiz Esparza Guillermo
 --@Fecha:  16/12/2025
---@Descripción: Simula un dos dias de insercion
+--@Descripción: Simula un dia de insercion
 
--- Sábado
+-- Lunes
 
 connect admin_operacion/1234@operacion
 
-EXEC INSERTAR_RASTREO_TRANSPORTE(to_date('10-12-2025', 'DD-MM-YYYY'))
-
-EXEC INSERTAR_OPERACIONES(50,70 , to_date('10-12-2025', 'DD-MM-YYYY'))
+EXEC INSERTAR_OPERACIONES(70,50 , to_date('10-12-2025', 'DD-MM-YYYY'))
 
 EXEC CANCELAR_INICIAR_OPERACIONES(to_date('10-12-2025', 'DD-MM-YYYY'))
 
 EXEC INSERTAR_PAGO_VENTAS
 EXEC INSERTAR_EVIDENCIAS_OPERACION
+EXEC carga_img_evidencia()
 
--- Domingo
-
-EXEC INSERTAR_RASTREO_TRANSPORTE(to_date('11-12-2025', 'DD-MM-YYYY'))
-
-EXEC INSERTAR_OPERACIONES(65,65 , to_date('11-12-2025', 'DD-MM-YYYY'))
-
-EXEC CANCELAR_INICIAR_OPERACIONES(to_date('11-12-2025', 'DD-MM-YYYY'))
-
-EXEC INSERTAR_PAGO_VENTAS
-EXEC INSERTAR_EVIDENCIAS_OPERACION
-
-
-connect admin_cliente/1234@cliente
-EXEC LLENAR_MODULO_CLIENTE(15, 20, 7)
+exit
 
 exit

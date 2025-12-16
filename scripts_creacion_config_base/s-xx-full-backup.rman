@@ -1,14 +1,6 @@
---@Autor:  Zurita Cámara Juan Pablo y Hernández Ruiz Esparza Guillermo
---@Fecha:  14/12/2025
---@Descripción: Full Backup 
-
-# -----------------------------------------------------------
-# SCRIPT RMAN: FULL BACKUP (Base de Datos + Archivelogs)
-# -----------------------------------------------------------
 
 RUN {
-    BACKUP DATABASE PLUS ARCHIVELOG TAG 'FULL_DB_BACKUP';        
-    DELETE NOPROMPT OBSOLETE;
+    BACKUP AS COPY DEVICE TYPE DISK DATABASE PLUS ARCHIVELOG;        
 }
 
 EXIT;

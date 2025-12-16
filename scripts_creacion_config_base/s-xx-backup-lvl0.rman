@@ -1,13 +1,7 @@
-# @Autor:  Zurita Cámara Juan Pablo y Hernández Ruiz Esparza Guillermo
-# @Fecha:  14/12/2025
-# @Descripción: Backup Incremental Nivel 0 (Cada mes)
-
 
 RUN {
 
     BACKUP AS BACKUPSET INCREMENTAL LEVEL 0 DATABASE TAG 'LVL0_FRA_BASE';
-
-    BACKUP AS BACKUPSET ARCHIVELOG ALL DELETE INPUT  TAG 'ARCH_FRA_BASE';
  
     DELETE NOPROMPT OBSOLETE;
 }

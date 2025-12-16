@@ -11,15 +11,18 @@ Prompt Configurando para habilitar la FRA
 
 connect c##sys_modulos_virtualAgricola/1234 as sysdba
 
-alter system set db_recovery_file_dest_size=14G; 
+alter system set db_recovery_file_dest_size=18G; 
 
 alter system set db_recovery_file_dest='/unam/bda/discos/disk3/app/oracle/fast_recovery';
 
-alter system set db_flashback_retention_target=1440;
+alter system set db_flashback_retention_target=2880;
 
 -- Habilta flash back
 
 alter database flashback on;
+
+alter database enable block change tracking using file
+'/unam/bda/discos/disk10/backups/block-tracking/change_tracking.dbf'
 
 Prompt FRA habilitada
 Prompt ===============================================
